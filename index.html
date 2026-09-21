@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LenaDesign — карточки и видео для маркетплейсов и соцсетей</title>
+<meta name="description" content="LenaDesign — ИИ-креатор. Создаю карточки товаров для Wildberries, Ozon и Яндекс.Маркет, видео-обложки, анимацию товаров и ролики для Reels, Shorts, TikTok. Тёплые и живые визуалы, которые продают. От 1 500 ₽, срок от 1 дня.">
+<meta property="og:title" content="LenaDesign — визуалы и видео с душой, которые продают">
+<meta property="og:description" content="Карточки и видео для маркетплейсов и соцсетей с помощью нейросетей.">
+<style>
+  :root {
+    --beige-100: #241A0C;   /* тёмный эспрессо-фон */
+    --beige-200: #2E200F;   /* тёмная секция */
+    --beige-300: #B08A4C;   /* золотая окантовка */
+    --olive-600: #D9A860;   /* золото */
+    --olive-700: #B57E48;   /* тёмное золото */
+    --olive-800: #8A5C2E;   /* коричнево-золотой */
+    --brown-800: #4A3210;   /* глубокий коричневый */
+    --brown-900: #241A0C;   /* глубочайший коричневый */
+    --gray-700: #CDBB93;    /* тёплый светлый текст */
+    --gray-900: #F1E3C2;    /* светлый для заголовков */
+    --white: #2A1D0E;       /* тёмная карточка */
+    --radius: 18px;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    --font: "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    color: var(--gray-900);
+    background:
+      radial-gradient(38% 42% at 12% 18%, rgba(255, 176, 92, 0.22), transparent 70%),
+      radial-gradient(42% 46% at 88% 12%, rgba(214, 150, 120, 0.18), transparent 70%),
+      radial-gradient(40% 44% at 70% 85%, rgba(240, 190, 110, 0.20), transparent 70%),
+      radial-gradient(34% 38% at 30% 70%, rgba(230, 170, 100, 0.16), transparent 70%),
+      linear-gradient(115deg, #342816 0%, #2A1F12 45%, #3A2B18 100%);
+    background-size: 180% 180%, 160% 160%, 170% 170%, 150% 150%, 100% 100%;
+    background-attachment: fixed;
+    animation: bgDrift 24s ease-in-out infinite alternate;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @keyframes bgDrift {
+    0%   { background-position: 0% 0%, 100% 0%, 50% 100%, 20% 30%, 0 0; }
+    50%  { background-position: 12% 6%, 72% 14%, 38% 78%, 45% 45%, 0 0; }
+    100% { background-position: 24% 12%, 48% 22%, 24% 62%, 66% 38%, 0 0; }
+  }
+
+  .container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(36, 26, 14, 0.9);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--beige-300);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+
+  .logo {
+    font-weight: 700;
+    font-size: 28px;
+    color: #E8C583;
+    text-decoration: none;
+    letter-spacing: -0.3px;
+  }
+
+  .logo span {
+    color: #D9A860;
+    font-weight: 400;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: var(--gray-700);
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: #E8C583; }
+
+  .nav-cta {
+    background:
+      linear-gradient(90deg, rgba(255, 249, 232, 0) 30%, rgba(255, 249, 230, 0.35) 50%, rgba(255, 249, 232, 0) 70%),
+      linear-gradient(90deg, #C0944F 0%, #DFB26C 40%, #F5DBA0 50%, #DFB26C 60%, #C0944F 100%);
+    color: #3B2A12 !important;
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-weight: 700;
+    border: 1px solid rgba(255, 218, 150, 0.55);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.35), inset 0 -2px 4px rgba(60,30,0,.35), 0 4px 12px rgba(120,70,20,.22);
+    text-shadow: 0 1px 0 rgba(255,245,220,.3);
+  }
+
+  .nav-cta:hover {
+    background:
+      linear-gradient(90deg, rgba(255, 249, 232, 0) 30%, rgba(255, 249, 230, 0.45) 50%, rgba(255, 249, 232, 0) 70%),
+      linear-gradient(90deg, #CA9C58 0%, #E4BD78 40%, #F8E0A6 50%, #E4BD78 60%, #CA9C58 100%);
+    color: #3B2A12 !important;
+    transform: translateY(-1px);
+  }
+
+  .burger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 26px;
+    color: #D9A860;
+    cursor: pointer;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 96px 0 72px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(217, 168, 96, 0.16), transparent 70%);
+  }
+
+  .eyebrow {
+    display: inline-block;
+    background:
+      linear-gradient(90deg, rgba(255, 249, 232, 0) 30%, rgba(255, 249, 230, 0.35) 50%, rgba(255, 249, 232, 0) 70%),
+      linear-gradient(90deg, #C0944F 0%, #DFB26C 40%, #F5DBA0 50%, #DFB26C 60%, #C0944F 100%);
+    color: #3B2A12;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 8px 20px;
+    border-radius: 999px;
+    margin-bottom: 24px;
+    letter-spacing: 0.4px;
+    border: 1px solid rgba(255, 218, 150, 0.55);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.35), inset 0 -2px 4px rgba(60,30,0,.35), 0 5px 14px rgba(120,70,20,.22);
+    text-shadow: 0 1px 0 rgba(255,245,220,.3);
+  }
+
+  .hero h1 {
+    font-size: clamp(34px, 6vw, 58px);
+    line-height: 1.12;
+    font-weight: 700;
+    letter-spacing: -1px;
+    max-width: 840px;
+    margin: 0 auto 20px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--olive-600);
+  }
+
+  .hero p.lead {
+    max-width: 680px;
+    margin: 0 auto 36px;
+    font-size: clamp(16px, 2.4vw, 19px);
+    color: var(--gray-700);
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 64px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 14px 30px;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.2s, background 0.2s;
+  }
+
+  .btn-primary {
+    background:
+      linear-gradient(90deg, rgba(255, 249, 232, 0) 30%, rgba(255, 249, 230, 0.35) 50%, rgba(255, 249, 232, 0) 70%),
+      linear-gradient(90deg, #C0944F 0%, #DFB26C 40%, #F5DBA0 50%, #DFB26C 60%, #C0944F 100%);
+    color: #3B2A12;
+    font-weight: 700;
+    border: 1px solid rgba(255, 218, 150, 0.55);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.35), inset 0 -2px 4px rgba(60,30,0,.35), 0 8px 18px rgba(120,70,20,.25);
+    text-shadow: 0 1px 0 rgba(255,245,220,.3);
+  }
+  .btn-primary:hover {
+    background:
+      linear-gradient(90deg, rgba(255, 249, 232, 0) 30%, rgba(255, 249, 230, 0.45) 50%, rgba(255, 249, 232, 0) 70%),
+      linear-gradient(90deg, #CA9C58 0%, #E4BD78 40%, #F8E0A6 50%, #E4BD78 60%, #CA9C58 100%);
+    transform: translateY(-2px);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.4), inset 0 -2px 4px rgba(60,30,0,.35), 0 12px 24px rgba(120,70,20,.32);
+  }
+
+  .btn-secondary {
+    background: rgba(42, 29, 14, 0.6);
+    color: #EBD9A8;
+    border: 1.5px solid var(--olive-600);
+    font-weight: 600;
+  }
+  .btn-secondary:hover {
+    background: rgba(56, 39, 18, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    text-align: left;
+  }
+
+  .feature {
+    background: linear-gradient(180deg, #33240F 0%, #231709 100%);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 6px 18px rgba(122, 84, 32, 0.12);
+    border: 1px solid var(--beige-300);
+  }
+
+  .feature .icon {
+    font-size: 26px;
+    margin-bottom: 12px;
+  }
+
+  .feature h3 {
+    font-size: 18px;
+    color: #E4C483;
+    margin-bottom: 8px;
+  }
+
+  .feature p {
+    font-size: 15px;
+    color: var(--gray-700);
+  }
+
+  /* ---------- Sections ---------- */
+  section { padding: 88px 0; }
+
+  .section-head {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 52px;
+  }
+
+  .section-head h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    letter-spacing: -0.5px;
+    margin-bottom: 14px;
+  }
+
+  .section-head h2 em { font-style: normal; color: var(--olive-600); }
+
+  .section-head p { color: var(--gray-700); font-size: 17px; }
+
+  .alt-bg { background: rgba(40, 28, 14, 0.35); }
+  .alt-bg-2 { background: rgba(54, 38, 17, 0.30); }
+
+  /* ---------- About ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .about-text p { margin-bottom: 16px; color: var(--gray-700); }
+  .about-text p strong { color: var(--gray-900); }
+
+  .about-card {
+    background: linear-gradient(180deg, #362713 0%, #241A0C 100%);
+    border: 1px solid var(--beige-300);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), var(--shadow);
+  }
+
+  .about-card h3 {
+    color: #E4C483;
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  .about-card ul { list-style: none; }
+
+  .about-card li {
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--beige-300);
+    font-size: 15px;
+    color: var(--gray-700);
+  }
+
+  .about-card li:last-child { border-bottom: none; }
+
+  .niches {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .niches span {
+    background:
+      linear-gradient(90deg, rgba(255, 249, 232, 0) 30%, rgba(255, 249, 230, 0.35) 50%, rgba(255, 249, 232, 0) 70%),
+      linear-gradient(90deg, #C0944F 0%, #DFB26C 40%, #F5DBA0 50%, #DFB26C 60%, #C0944F 100%);
+    border: 1px solid rgba(255, 218, 150, 0.5);
+    color: #3B2A12;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.3), inset 0 -1px 2px rgba(60,30,0,.3), 0 3px 8px rgba(120,70,20,.18);
+    text-shadow: 0 1px 0 rgba(255,245,220,.3);
+  }
+
+  /* ---------- Services ---------- */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .service-card {
+    background: linear-gradient(180deg, #362713 0%, #271B0C 100%);
+    border: 1px solid var(--beige-300);
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 12px 28px rgba(122, 84, 32, 0.18);
+  }
+
+  .service-card .num {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--olive-600);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .service-card h3 {
+    font-size: 24px;
+    margin: 10px 0 6px;
+  }
+
+  .service-card > p { color: var(--gray-700); margin-bottom: 16px; }
+
+  .service-card ul { list-style: none; }
+
+  .service-card li {
+    padding: 6px 0 6px 28px;
+    position: relative;
+    color: var(--gray-700);
+    font-size: 15px;
+  }
+
+  .service-card li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: var(--olive-600);
+    font-weight: 700;
+  }
+
+  .formats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 32px;
+  }
+
+  .format-box {
+    background: linear-gradient(180deg, #33240F 0%, #231709 100%);
+    border-radius: var(--radius);
+    padding: 24px;
+    border: 1px solid var(--beige-300);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 6px 18px rgba(122, 84, 32, 0.10);
+  }
+
+  .format-box h4 {
+    color: #E4C483;
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .format-box table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14.5px;
+  }
+
+  .format-box td {
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--beige-300);
+    color: var(--gray-700);
+    vertical-align: top;
+  }
+
+  .format-box tr:last-child td { border-bottom: none; }
+
+  .format-box td:first-child { font-weight: 600; color: var(--gray-900); white-space: nowrap; padding-right: 12px; }
+
+  .note {
+    margin-top: 24px;
+    padding: 16px 22px;
+    text-align: center;
+    background:
+      linear-gradient(90deg, rgba(255, 250, 235, 0) 32%, rgba(255, 250, 230, 0.35) 50%, rgba(255, 250, 235, 0) 68%),
+      linear-gradient(90deg, #E3CB98 0%, #EBD5A4 50%, #E3CB98 100%);
+    border-radius: var(--radius);
+    color: #4A3413;
+    font-size: 15px;
+    border-left: 4px solid var(--olive-800);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.45);
+  }
+
+  /* ---------- Portfolio ---------- */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .work {
+    background: linear-gradient(180deg, #33240F 0%, #231709 100%);
+    border: 1px solid var(--beige-300);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), var(--shadow);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .work video {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    background: #000000;
+    display: block;
+  }
+
+  .work-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+
+  .work-body .tag {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: var(--olive-600);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  .work-body h3 { font-size: 20px; margin: 8px 0 10px; }
+
+  .work-body p { font-size: 15px; color: var(--gray-700); margin-bottom: 10px; }
+
+  .work-body .result {
+    margin-top: auto;
+    font-size: 14.5px;
+    color: #4A3413;
+    background:
+      linear-gradient(90deg, rgba(255, 250, 238, 0) 32%, rgba(255, 250, 238, 0.35) 50%, rgba(255, 250, 238, 0) 68%),
+      linear-gradient(90deg, #E8CA96 0%, #F1DBAC 50%, #E8CA96 100%);
+    border: 1px solid rgba(255, 224, 170, 0.6);
+    border-radius: 10px;
+    padding: 10px 14px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.5), inset 0 -1px 2px rgba(90,60,10,.15);
+  }
+
+  /* ---------- Prices ---------- */
+  .prices-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .price-card {
+    background: linear-gradient(180deg, #33240F 0%, #231709 100%);
+    border: 1px solid var(--beige-300);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 6px 18px rgba(122, 84, 32, 0.12);
+    transition: transform 0.2s;
+  }
+
+  .price-card:hover { transform: translateY(-4px); }
+
+  .price-card.featured {
+    border: 2px solid var(--olive-600);
+    background: linear-gradient(180deg, #3A2A12 0%, #2A1D0E 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 0 0 4px rgba(217, 168, 96, 0.12), 0 10px 26px rgba(0, 0, 0, 0.35);
+  }
+
+  .price-card .badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background:
+      linear-gradient(90deg, rgba(255, 249, 232, 0) 30%, rgba(255, 249, 230, 0.35) 50%, rgba(255, 249, 232, 0) 70%),
+      linear-gradient(90deg, #C0944F 0%, #DFB26C 40%, #F5DBA0 50%, #DFB26C 60%, #C0944F 100%);
+    color: #3B2A12;
+    font-size: 12.5px;
+    font-weight: 800;
+    padding: 6px 16px;
+    border-radius: 999px;
+    white-space: nowrap;
+    border: 1px solid rgba(255, 218, 150, 0.55);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.35), inset 0 -2px 4px rgba(60,30,0,.35), 0 5px 14px rgba(120,70,20,.25);
+    text-shadow: 0 1px 0 rgba(255,245,220,.3);
+    letter-spacing: 0.3px;
+  }
+
+  .price-card h3 { font-size: 22px; margin-bottom: 4px; }
+
+  .price-card .sub { color: var(--gray-700); font-size: 14px; margin-bottom: 18px; }
+
+  .price { font-size: 32px; font-weight: 800; color: #E8C58A; margin-bottom: 4px; }
+  .price small { font-size: 15px; font-weight: 400; color: var(--gray-700); }
+
+  .price-note { font-size: 13.5px; color: var(--gray-700); margin-bottom: 18px; }
+
+  .price-card ul { list-style: none; flex: 1; margin: 6px 0 22px; }
+
+  .price-card li {
+    padding: 7px 0 7px 26px;
+    position: relative;
+    font-size: 15px;
+    color: var(--gray-700);
+  }
+
+  .price-card li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: var(--olive-600);
+    font-weight: 700;
+  }
+
+  .price-card .btn { text-align: center; display: block; }
+
+  .prices-foot {
+    text-align: center;
+    color: var(--gray-700);
+    margin-top: 32px;
+    font-size: 15px;
+  }
+
+  /* ---------- How I work ---------- */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    counter-reset: step;
+  }
+
+  .step {
+    background: linear-gradient(180deg, #33240F 0%, #231709 100%);
+    border: 1px solid var(--beige-300);
+    border-radius: var(--radius);
+    padding: 26px;
+    position: relative;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), var(--shadow);
+  }
+
+  .step .n {
+    font-size: 34px;
+    font-weight: 800;
+    color: var(--olive-600);
+    opacity: 0.35;
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+
+  .step h4 { font-size: 17px; margin-bottom: 8px; color: #E4C483; }
+  .step p { font-size: 14.5px; color: var(--gray-700); }
+
+  .workflow-note {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .workflow-note .box {
+    background:
+      linear-gradient(90deg, rgba(255, 250, 235, 0) 32%, rgba(255, 250, 230, 0.35) 50%, rgba(255, 250, 235, 0) 68%),
+      linear-gradient(90deg, #E3CB98 0%, #EBD5A4 50%, #E3CB98 100%);
+    border: 1px solid var(--beige-300);
+    border-radius: var(--radius);
+    padding: 22px 26px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.45);
+  }
+
+  .workflow-note .box h4 { color: var(--olive-800); margin-bottom: 8px; font-size: 16px; }
+  .workflow-note .box p, .workflow-note .box li { font-size: 14.5px; color: #4A3413; }
+  .workflow-note ul { list-style: none; margin-top: 4px; }
+  .workflow-note li { padding: 3px 0; }
+  .workflow-note li::before { content: "· "; color: var(--olive-600); font-weight: 700; }
+
+  /* ---------- Reviews / FAQ ---------- */
+  .empty-block {
+    background: linear-gradient(180deg, #33240F 0%, #231709 100%);
+    border: 1.5px dashed var(--olive-600);
+    border-radius: var(--radius);
+    padding: 48px 24px;
+    text-align: center;
+    color: var(--gray-700);
+    font-size: 16px;
+  }
+
+  .faq-list { max-width: 760px; margin: 0 auto; }
+
+  details {
+    background: linear-gradient(180deg, #33240F 0%, #231709 100%);
+    border: 1px solid var(--beige-300);
+    border-radius: 14px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  summary {
+    padding: 20px 24px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16.5px;
+    color: var(--gray-900);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  summary::-webkit-details-marker { display: none; }
+
+  summary::after {
+    content: "+";
+    font-size: 24px;
+    color: var(--olive-600);
+    transition: transform 0.2s;
+  }
+
+  details[open] summary::after { transform: rotate(45deg); }
+
+  details p {
+    padding: 0 24px 20px;
+    color: var(--gray-700);
+    font-size: 15.5px;
+  }
+
+  /* ---------- Contacts ---------- */
+  .contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 860px;
+    margin: 0 auto 36px;
+  }
+
+  .contact-card {
+    background: linear-gradient(180deg, #33240F 0%, #231709 100%);
+    border-radius: var(--radius);
+    padding: 28px;
+    text-align: center;
+    border: 1px solid var(--beige-300);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), var(--shadow);
+  }
+
+  .contact-card .icon { font-size: 28px; margin-bottom: 10px; }
+  .contact-card h4 { color: #E4C483; margin-bottom: 6px; }
+  .contact-card p { color: var(--gray-700); font-size: 15px; word-break: break-word; }
+
+  .contacts-hint {
+    text-align: center;
+    background:
+      linear-gradient(90deg, rgba(255, 250, 235, 0) 32%, rgba(255, 250, 230, 0.35) 50%, rgba(255, 250, 235, 0) 68%),
+      linear-gradient(90deg, #E3CB98 0%, #EBD5A4 50%, #E3CB98 100%);
+    border: 1px solid var(--beige-300);
+    border-radius: var(--radius);
+    padding: 22px 28px;
+    max-width: 760px;
+    margin: 0 auto;
+    color: #4A3413;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.45);
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    padding: 36px 0;
+    border-top: 1px solid var(--beige-300);
+    background: rgba(46, 33, 18, 0.7);
+  }
+
+  footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  footer p { color: var(--gray-700); font-size: 14.5px; }
+
+  .footer-links a { color: var(--gray-700); text-decoration: none; margin-left: 18px; font-size: 14.5px; }
+  .footer-links a:hover { color: #E8C583; }
+
+  /* ---------- Animations & polish ---------- */
+  .hero { position: relative; overflow: hidden; }
+
+  /* Entrance for hero content */
+  .hero .eyebrow,
+  .hero h1,
+  .hero p.lead,
+  .hero .hero-btns {
+    animation: riseIn 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+  .hero .eyebrow { animation-delay: 0.05s; }
+  .hero h1      { animation-delay: 0.15s; }
+  .hero p.lead  { animation-delay: 0.28s; }
+  .hero .hero-btns { animation-delay: 0.40s; }
+
+  @keyframes riseIn {
+    from { opacity: 0; transform: translateY(26px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* Floating golden sparkles */
+  .sparkles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .sparkle {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 231, 160, 0.95) 0%, rgba(255, 231, 160, 0) 70%);
+    opacity: 0;
+    animation: sparkleFloat 10s ease-in-out infinite;
+  }
+  .sparkle:nth-child(1) { left: 10%;  top: 78%; animation-delay: 0s;    animation-duration: 12s; }
+  .sparkle:nth-child(2) { left: 28%;  top: 85%; animation-delay: 2.2s;  animation-duration: 10s; }
+  .sparkle:nth-child(3) { left: 48%;  top: 90%; animation-delay: 4.1s;  animation-duration: 14s; }
+  .sparkle:nth-child(4) { left: 68%;  top: 80%; animation-delay: 1.4s;  animation-duration: 11s; }
+  .sparkle:nth-child(5) { left: 86%;  top: 86%; animation-delay: 3.3s;  animation-duration: 13s; }
+  .sparkle:nth-child(6) { left: 93%;  top: 72%; animation-delay: 5.2s;  animation-duration: 9s;  }
+
+  @keyframes sparkleFloat {
+    0%   { transform: translateY(0) scale(1); opacity: 0; }
+    12%  { opacity: 1; }
+    50%  { transform: translateY(-38vh) scale(1.35); opacity: 0.9; }
+    100% { transform: translateY(-96vh) scale(0.5); opacity: 0; }
+  }
+
+  /* Animated underline under section headings */
+  .section-head h2 { position: relative; padding-bottom: 16px; }
+  .section-head h2::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 72px;
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #C69256, #EFCF90, #C69256, #EFCF90);
+    background-size: 200% 100%;
+    animation: shineSlide 4.5s linear infinite;
+  }
+  @keyframes shineSlide {
+    0%   { background-position: 0% 50%; }
+    100% { background-position: -200% 50%; }
+  }
+
+  /* Shimmering gold accent words */
+  .hero h1 em,
+  .section-head h2 em {
+    font-style: normal;
+    background: linear-gradient(90deg, #D9A860 0%, #F5DFA8 35%, #D9A860 65%, #F5DFA8 100%);
+    background-size: 250% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmerText 6s linear infinite;
+  }
+  @keyframes shimmerText {
+    0%   { background-position: 0% center; }
+    100% { background-position: -250% center; }
+  }
+
+  /* Nav link animated underline */
+  .nav-links a { position: relative; }
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    border-radius: 1px;
+    background: var(--olive-600);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-links .nav-cta::after { display: none; }
+
+  /* Gentle zoom on portfolio videos */
+  .work video { transition: transform 0.6s ease; }
+  .work:hover video { transform: scale(1.045); }
+
+  /* Scroll-reveal system */
+  .js-reveal .section-head,
+  .js-reveal .feature,
+  .js-reveal .service-card,
+  .js-reveal .format-box,
+  .js-reveal .work,
+  .js-reveal .price-card,
+  .js-reveal .step,
+  .js-reveal .workflow-note .box,
+  .js-reveal .contact-card,
+  .js-reveal .contacts-hint,
+  .js-reveal .empty-block,
+  .js-reveal .about-text,
+  .js-reveal .about-card {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  .js-reveal .visible { opacity: 1; transform: none; }
+
+  /* Staggered card reveals */
+  .js-reveal .features .feature:nth-child(2),
+  .js-reveal .services-grid .service-card:nth-child(2),
+  .js-reveal .portfolio-grid .work:nth-child(2),
+  .js-reveal .prices-grid .price-card:nth-child(2),
+  .js-reveal .steps .step:nth-child(2) { transition-delay: 0.08s; }
+  .js-reveal .portfolio-grid .work:nth-child(3),
+  .js-reveal .prices-grid .price-card:nth-child(3),
+  .js-reveal .steps .step:nth-child(3) { transition-delay: 0.16s; }
+  .js-reveal .portfolio-grid .work:nth-child(4),
+  .js-reveal .steps .step:nth-child(4) { transition-delay: 0.24s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .js-reveal .section-head,
+    .js-reveal .feature,
+    .js-reveal .service-card,
+    .js-reveal .format-box,
+    .js-reveal .work,
+    .js-reveal .price-card,
+    .js-reveal .step,
+    .js-reveal .workflow-note .box,
+    .js-reveal .contact-card,
+    .js-reveal .contacts-hint,
+    .js-reveal .empty-block,
+    .js-reveal .about-text,
+    .js-reveal .about-card {
+      opacity: 1;
+      transform: none;
+      transition: none;
+      animation: none;
+    }
+    body { animation: none; }
+    .hero .eyebrow, .hero h1, .hero p.lead, .hero .hero-btns { animation: none; }
+    .sparkle { display: none; }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .features, .services-grid, .prices-grid, .portfolio-grid { grid-template-columns: 1fr; }
+    .about-grid, .formats, .workflow-note { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .contacts-grid { grid-template-columns: 1fr; max-width: 420px; }
+  }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .burger { display: block; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: var(--beige-100);
+      border-bottom: 1px solid var(--beige-300);
+      padding: 20px 24px;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .steps { grid-template-columns: 1fr; }
+    section { padding: 64px 0; }
+    .hero { padding: 64px 0 48px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="container nav">
+    <a href="#top" class="logo">Lena<span>Design</span></a>
+    <button class="burger" id="burger" aria-label="Меню">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">Обо мне</a></li>
+      <li><a href="#services">Услуги</a></li>
+      <li><a href="#portfolio">Портфолио</a></li>
+      <li><a href="#prices">Цены</a></li>
+      <li><a href="#process">Как я работаю</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contacts" class="nav-cta">Обсудить проект</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="sparkles" aria-hidden="true">
+      <span class="sparkle"></span>
+      <span class="sparkle"></span>
+      <span class="sparkle"></span>
+      <span class="sparkle"></span>
+      <span class="sparkle"></span>
+      <span class="sparkle"></span>
+    </div>
+    <div class="container">
+      <span class="eyebrow">LenaDesign · ИИ-креатор</span>
+      <h1>Визуалы и видео <em>с душой</em>, которые продают</h1>
+      <p class="lead">Создаю карточки и видео для маркетплейсов (Wildberries, Ozon, Яндекс.Маркет) и соцсетей с помощью нейросетей. Продумываю сюжет, настроение и детали — чтобы ваш товар выделялся и продавался.</p>
+      <div class="hero-btns">
+        <a href="#portfolio" class="btn btn-primary">Посмотреть работы</a>
+        <a href="#contacts" class="btn btn-secondary">Обсудить проект</a>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <div class="icon">🎨</div>
+          <h3>Красиво</h3>
+          <p>Тёплые и живые визуалы, а не бездушная нейросетевая генерация.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">⚡</div>
+          <h3>Быстро</h3>
+          <p>Карточка или ролик — от 1–2 дней. Срочные заказы — по договорённости.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">📈</div>
+          <h3>Полезно для бизнеса</h3>
+          <p>Визуал работает на продажи — останавливает скролл и вызывает желание узнать больше о товаре.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about" class="alt-bg">
+    <div class="container">
+      <div class="section-head">
+        <h2>Немного <em>обо мне</em></h2>
+        <p>Кто стоит за LenaDesign и почему ваши визуалы будут с характером.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>Привет! Я Лена, ИИ-креатор студии LenaDesign.</p>
+          <p>Я создаю видео и визуалы для маркетплейсов и соцсетей с помощью нейросетей и помогаю брендам и селлерам выделиться среди конкурентов.</p>
+          <p>Мои визуалы — <strong>тёплые и живые</strong>. Я не просто генерирую картинки, а продумываю сюжет, настроение и детали. Поэтому клиент получает визуал с душой, а не бездушную нейросетевую генерацию.</p>
+          <p>В работе для меня важны три вещи сразу: <strong>креатив, скорость и польза для бизнеса</strong>. Красиво, быстро и так, чтобы это работало на продажи — это и есть моя задача как ИИ-креатора.</p>
+        </div>
+        <div class="about-card">
+          <h3>С кем я работаю</h3>
+          <ul>
+            <li>Селлеры на маркетплейсах (WB, Ozon, Яндекс.Маркет)</li>
+            <li>Бренды — небольшие компании, которые хотят выделиться</li>
+            <li>Блогеры — оформление соцсетей и короткие видео</li>
+            <li>Образовательные проекты — видео с аватаром и презентации</li>
+          </ul>
+          <h3 style="margin-top:20px;">Ниши</h3>
+          <div class="niches">
+            <span>Зоотовары</span>
+            <span>Товары для дома</span>
+            <span>Косметика</span>
+            <span>Одежда</span>
+            <span>Еда и напитки</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <h2>Что я <em>делаю</em></h2>
+        <p>Две основные услуги — карточки и видео. Плюс гибкие форматы под любую площадку.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="num">Услуга 01</div>
+          <h3>Карточки для маркетплейсов</h3>
+          <p>Полный комплект для Wildberries, Ozon и Яндекс.Маркет, который выделит товар в выдаче.</p>
+          <ul>
+            <li>Главное фото товара</li>
+            <li>Инфографика: цена, размеры, преимущества</li>
+            <li>Чистые ракурсы (2–3 фото)</li>
+            <li>SEO-описание и характеристики</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="num">Услуга 02</div>
+          <h3>Видео для маркетплейсов и соцсетей</h3>
+          <p>Короткие ролики, которые останавливают скролл и удерживают внимание.</p>
+          <ul>
+            <li>Видео-обложки для карточек</li>
+            <li>Анимация товара (вращение, движение)</li>
+            <li>Видео с говорящим аватаром (озвучка)</li>
+            <li>Ролики для Reels, Shorts, TikTok, VK, Telegram</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="formats">
+        <div class="format-box">
+          <h4>Форматы</h4>
+          <table>
+            <tr><td>9:16 вертикаль</td><td>Reels, Shorts, TikTok, VK Клипы, видео-обложки — самый частый запрос</td></tr>
+            <tr><td>1:1 квадрат</td><td>Лента Instagram и VK</td></tr>
+            <tr><td>16:9 горизонталь</td><td>YouTube, сайты, презентации</td></tr>
+          </table>
+        </div>
+        <div class="format-box">
+          <h4>Хронометраж</h4>
+          <table>
+            <tr><td>15 секунд</td><td>Самый популярный формат для карточек и соцсетей</td></tr>
+            <tr><td>30 секунд</td><td>Обучающие ролики и подробные обзоры</td></tr>
+            <tr><td>60 секунд</td><td>YouTube Shorts и развёрнутые видео</td></tr>
+            <tr><td>до 5 минут</td><td>Видео с аватаром (озвучка)</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <p class="note">Чаще всего заказывают вертикальные видео 15–30 секунд: видео-обложки для карточек, анимация товара и ролики для Reels/Shorts.</p>
+    </div>
+  </section>
+
+  <!-- ================= PORTFOLIO ================= -->
+  <section id="portfolio" class="alt-bg">
+    <div class="container">
+      <div class="section-head">
+        <h2>Портфолио — это <em>истории</em></h2>
+        <p>Не просто файлы. Каждый кейс — это товар, задача и результат.</p>
+      </div>
+
+      <div class="portfolio-grid">
+        <div class="work">
+          <video src="аватар.mp4" controls muted loop preload="metadata"></video>
+          <div class="work-body">
+            <span class="tag">Видео с аватаром · обучение</span>
+            <h3>Видео с говорящим аватаром</h3>
+            <p>Задача: оформить контент для образовательного проекта. Видео с аватаром и озвучкой — от 30 секунд до 5 минут. Подходит для презентаций и лид-магнитов.</p>
+            <p class="result">🗣️ Результат: готовый ролик без съёмки — только текст и идея.</p>
+          </div>
+        </div>
+
+        <div class="work">
+          <video src="кружка.mp4" controls muted loop preload="metadata"></video>
+          <div class="work-body">
+            <span class="tag">Карточка · маркетплейсы</span>
+            <h3>Кружка — карточка с нуля</h3>
+            <p>Задача: сделать полный комплект карточки для нового товара. Собрала от идеи до готового комплекта: главное фото, инфографика, чистые ракурсы и видео.</p>
+            <p class="result">💛 Результат: работа ушла в портфолио — клиенту понравилось.</p>
+          </div>
+        </div>
+
+        <div class="work">
+          <video src="наполнитель.mp4" controls muted loop preload="metadata"></video>
+          <div class="work-body">
+            <span class="tag">Карточка + видео · маркетплейсы</span>
+            <h3>Наполнитель — карточка и видео с кошкой</h3>
+            <p>Задача: выделить товар в выдаче. 5 слайдов с инфографикой + видео с оживлением фото. Синхронизировала звук и добавила анимацию — живо и с юмором.</p>
+            <p class="result">📈 Результат: конверсия карточки с видео — до 23% выше, просмотров в 2–3 раза больше (по данным маркетплейсов).</p>
+          </div>
+        </div>
+
+        <div class="work">
+          <video src="анимация.mp4" controls muted loop preload="metadata"></video>
+          <div class="work-body">
+            <span class="tag">Короткие видео · соцсети</span>
+            <h3>Анимированные ролики для соцсетей</h3>
+            <p>Задача: контент, который привлечёт. Анимированные ролики в фирменном стиле — например, видео с богатырём.</p>
+            <p class="result">🎬 Результат: контент удерживает внимание и формирует доверие к продукту.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRICES ================= -->
+  <section id="prices">
+    <div class="container">
+      <div class="section-head">
+        <h2>Цены и <em>пакеты</em></h2>
+        <p>Типовые задачи — по пакетам. Нестандартные — считаю индивидуально. Точную стоимость называю после брифа.</p>
+      </div>
+
+      <div class="prices-grid">
+        <div class="price-card">
+          <h3>«Старт»</h3>
+          <div class="sub">Для тех, кто только начинает</div>
+          <div class="price">от 1 500 ₽ <small>/ за 1–2 дня</small></div>
+          <p class="price-note">Один заказ, чтобы попробовать и запуститься.</p>
+          <ul>
+            <li>1 карточка для WB/Ozon (главное фото + инфографика + описание)</li>
+            <li>или 1 короткое видео (до 15 сек)</li>
+            <li>Срок: 1–2 дня</li>
+          </ul>
+          <a href="#contacts" class="btn btn-primary">Заказать «Старт»</a>
+        </div>
+
+        <div class="price-card featured">
+          <span class="badge">Хит продаж</span>
+          <h3>«Бизнес»</h3>
+          <div class="sub">Для активных селлеров</div>
+          <div class="price">от 6 500 ₽ <small>/ за 3–5 дней</small></div>
+          <p class="price-note">Экономия ~20% по сравнению с разовыми заказами.</p>
+          <ul>
+            <li>5 карточек для WB/Ozon (полный комплект)</li>
+            <li>или 5 коротких видео (до 15 сек)</li>
+            <li>Срок: 3–5 дней</li>
+          </ul>
+          <a href="#contacts" class="btn btn-primary">Заказать «Бизнес»</a>
+        </div>
+
+        <div class="price-card">
+          <h3>«Премиум»</h3>
+          <div class="sub">Для брендов и больших объёмов</div>
+          <div class="price">от 20 000 ₽ <small>/ в месяц</small></div>
+          <p class="price-note">Постоянная поддержка вашего контента.</p>
+          <ul>
+            <li>До 10 карточек или до 10 видео в месяц</li>
+            <li>Приоритетная обработка</li>
+            <li>Правки без доплат</li>
+          </ul>
+          <a href="#contacts" class="btn btn-primary">Заказать «Премиум»</a>
+        </div>
+      </div>
+
+      <p class="prices-foot">🚀 Срочные заказы — возможны, но с наценкой. Сроки уточняйте в личном сообщении.</p>
+    </div>
+  </section>
+
+  <!-- ================= HOW I WORK ================= -->
+  <section id="process" class="alt-bg">
+    <div class="container">
+      <div class="section-head">
+        <h2>Как я <em>работаю</em></h2>
+        <p>Понятный процесс из четырёх шагов — от брифа до готового файла.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="n">01</div>
+          <h4>Бриф</h4>
+          <p>Вы присылаете фото товара в хорошем качестве и заполняете бриф: преимущества, цвета, стиль. По желанию — ссылка на карточку конкурента.</p>
+        </div>
+        <div class="step">
+          <div class="n">02</div>
+          <h4>Превью</h4>
+          <p>Делаю 1–2 варианта и отправляю на согласование — вы видите направление до финальной работы.</p>
+        </div>
+        <div class="step">
+          <div class="n">03</div>
+          <h4>Правки</h4>
+          <p>Вносим корректировки — до 2 итераций бесплатно.</p>
+        </div>
+        <div class="step">
+          <div class="n">04</div>
+          <h4>Готовый файл</h4>
+          <p>Вы получаете PNG / MP4 в нужном формате и размере. Всё, можно публиковать.</p>
+        </div>
+      </div>
+
+      <div class="workflow-note">
+        <div class="box">
+          <h4>Сроки</h4>
+          <ul>
+            <li>1 карточка или 1 видео — 1–2 дня</li>
+            <li>Пакет из 5 карточек или 5 видео — 3–5 дней</li>
+            <li>Срочные заказы — по договорённости</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>Что нужно от вас</h4>
+          <ul>
+            <li>Фото товара в хорошем качестве</li>
+            <li>Текст или ключевые преимущества для инфографики</li>
+            <li>Пожелания по стилю или ссылка на пример</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= REVIEWS ================= -->
+  <section id="reviews">
+    <div class="container">
+      <div class="section-head">
+        <h2>Отзывы <em>клиентов</em></h2>
+        <p>Несколько слов о работе с LenaDesign.</p>
+      </div>
+      <div class="empty-block">
+        ✨ Этот раздел заполняется по мере поступления отзывов.<br>
+        Работаете со мной? Напишите — и я с удовольствием добавлю ваш отзыв сюда.
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section id="faq" class="alt-bg">
+    <div class="container">
+      <div class="section-head">
+        <h2>Частые <em>вопросы</em></h2>
+        <p>Отвечаю на то, о чём спрашивают чаще всего.</p>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>У меня нет возможности снять товар — получится ли видео?</summary>
+          <p>Да. Для этого и нужны нейросети: я делаю видео и анимацию из обычных фото товара. Снимать ничего не нужно — присылаете фотографии, остальное на мне.</p>
+        </details>
+        <details>
+          <summary>Товар не выделяется среди конкурентов — что делать?</summary>
+          <p>Это самая частая задача, с которой приходят. Сделаю карточку или видео, которое зацепит взгляд в выдаче: у покупателя есть 1–2 секунды, чтобы остановиться на вашем товаре, — и я помогаю эти секунды выиграть.</p>
+        </details>
+        <details>
+          <summary>Сколько это стоит?</summary>
+          <p>Точную стоимость называю после брифа — она зависит от объёма, сложности и сроков. Ориентиры: пакет «Старт» — от 1 500 ₽, «Бизнес» — от 6 500 ₽, «Премиум» — от 20 000 ₽.</p>
+        </details>
+        <details>
+          <summary>Будут ли это бездушные картинки, как у всех?</summary>
+          <p>Нет. Я продумываю сюжет, настроение и детали под ваш товар и аудиторию. Это не генерация по шаблону, а визуал с душой — тёплый и живой, который работает на продажи.</p>
+        </details>
+        <details>
+          <summary>Как быстро можно получить готовый файл?</summary>
+          <p>1 карточка или 1 видео — от 1–2 дней. Пакет из 5 карточек или видео — 3–5 дней. Срочные заказы возможны с наценкой — напишите, подберу вариант.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACTS ================= -->
+  <section id="contacts">
+    <div class="container">
+      <div class="section-head">
+        <h2>Давайте <em>обсудим</em> ваш проект</h2>
+        <p>Напишите — отвечу в течение дня, уточню детали и назову точную стоимость.</p>
+      </div>
+
+      <div class="contacts-grid">
+        <div class="contact-card">
+          <div class="icon">💬</div>
+          <h4>MAX</h4>
+          <p>Предпочтительный способ связи<br>[укажите @username]</p>
+        </div>
+        <div class="contact-card">
+          <div class="icon">✉️</div>
+          <h4>Email</h4>
+          <p>[укажите email]</p>
+        </div>
+        <div class="contact-card">
+          <div class="icon">💼</div>
+          <h4>Kwork</h4>
+          <p>[ссылка на профиль]</p>
+        </div>
+      </div>
+
+      <p class="contacts-hint">Работаем по предоплате. Правки — до 2 итераций бесплатно. Изображения и видео — в форматах PNG / MP4 под вашу площадку.</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <p>© 2026 LenaDesign · Визуалы и видео с душой</p>
+    <div class="footer-links">
+      <a href="#services">Услуги</a>
+      <a href="#portfolio">Портфолио</a>
+      <a href="#prices">Цены</a>
+      <a href="#contacts">Контакты</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Мобильное меню
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  // Закрывать меню при клике по ссылке
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  // Анимации при скролле
+  document.documentElement.classList.add('js-reveal');
+  const revealTargets = document.querySelectorAll(
+    '.feature, .service-card, .format-box, .work, .price-card, .step, .contact-card, ' +
+    '.section-head, .about-text, .about-card, .workflow-note .box, .contacts-hint, ' +
+    '.empty-block'
+  );
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealTargets.forEach(el => io.observe(el));
+  } else {
+    revealTargets.forEach(el => el.classList.add('visible'));
+  }
+</script>
+
+</body>
+</html>
