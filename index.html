@@ -3,41 +3,60 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <title>LenaDesign — карточки и видео для маркетплейсов и соцсетей</title>
 <meta name="description" content="LenaDesign — ИИ-креатор. Создаю карточки товаров для Wildberries, Ozon и Яндекс.Маркет, видео-обложки, анимацию товаров и ролики для Reels, Shorts, TikTok. Тёплые и живые визуалы, которые продают. От 1 500 ₽, срок от 1 дня.">
 <meta property="og:title" content="LenaDesign — визуалы и видео с душой, которые продают">
 <meta property="og:description" content="Карточки и видео для маркетплейсов и соцсетей с помощью нейросетей.">
 <style>
   :root {
-    --beige-100: #241A0C;   /* тёмный эспрессо-фон */
-    --beige-200: #2E200F;   /* тёмная секция */
-    --beige-300: #B08A4C;   /* золотая окантовка */
-    --olive-600: #D9A860;   /* золото */
-    --olive-700: #B57E48;   /* тёмное золото */
-    --olive-800: #8A5C2E;   /* коричнево-золотой */
-    --brown-800: #4A3210;   /* глубокий коричневый */
-    --brown-900: #241A0C;   /* глубочайший коричневый */
-    --gray-700: #CDBB93;    /* тёплый светлый текст */
-    --gray-900: #F1E3C2;    /* светлый для заголовков */
-    --white: #2A1D0E;       /* тёмная карточка */
+    --bg: #1A1410;          /* тёплый тёмно-шоколадный фон */
+    --bg-section: #241C16;  /* фон секций */
+    --bg-card: #241C16;     /* фон карточек */
+    --gold: #C9A961;        /* золото — акцент */
+    --gold-light: #E8D5A0;  /* золото светлое — hover, блики */
+    --gold-dim: rgba(201, 169, 97, 0.28); /* тонкая золотая линия */
+    --text: #F5F0E8;        /* тёплый белый */
+    --text-muted: #8A8378;  /* серо-бежевый */
     --radius: 18px;
-    --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-    --font: "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+    --font-heading: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --font: "Manrope", "Inter", -apple-system, "Segoe UI", Arial, sans-serif;
+    /* совместимость со старыми переменными */
+    --beige-100: var(--bg);
+    --beige-200: var(--bg-section);
+    --beige-300: var(--gold-dim);
+    --olive-600: var(--gold);
+    --olive-700: #A8844B;
+    --olive-800: var(--gold-light);
+    --brown-800: #4A3210;
+    --brown-900: var(--bg);
+    --gray-700: var(--text-muted);
+    --gray-900: var(--text);
+    --white: var(--bg-card);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  h1, h2, h3, h4, .logo, summary {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: -0.2px;
+  }
 
   html { scroll-behavior: smooth; }
 
   body {
     font-family: var(--font);
-    color: var(--gray-900);
+    color: #F9F6F1;
     background:
-      radial-gradient(38% 42% at 12% 18%, rgba(255, 176, 92, 0.22), transparent 70%),
-      radial-gradient(42% 46% at 88% 12%, rgba(214, 150, 120, 0.18), transparent 70%),
-      radial-gradient(40% 44% at 70% 85%, rgba(240, 190, 110, 0.20), transparent 70%),
-      radial-gradient(34% 38% at 30% 70%, rgba(230, 170, 100, 0.16), transparent 70%),
-      linear-gradient(115deg, #342816 0%, #2A1F12 45%, #3A2B18 100%);
+      radial-gradient(36% 40% at 12% 18%, rgba(201, 169, 97, 0.18), transparent 70%),
+      radial-gradient(40% 44% at 88% 12%, rgba(168, 132, 75, 0.14), transparent 70%),
+      radial-gradient(38% 42% at 70% 85%, rgba(201, 169, 97, 0.16), transparent 70%),
+      radial-gradient(32% 36% at 30% 70%, rgba(168, 132, 75, 0.12), transparent 70%),
+      linear-gradient(115deg, #1A1410 0%, #1C1612 50%, #1A1410 100%);
     background-size: 180% 180%, 160% 160%, 170% 170%, 150% 150%, 100% 100%;
     background-attachment: fixed;
     animation: bgDrift 24s ease-in-out infinite alternate;
@@ -62,66 +81,78 @@
     position: sticky;
     top: 0;
     z-index: 50;
-    background: rgba(36, 26, 14, 0.9);
+    background: rgba(26, 20, 16, 0.9);
     backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--beige-300);
+    border-bottom: 1px solid var(--gold-dim);
   }
 
   .nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 48px;
     height: 72px;
   }
 
   .logo {
-    font-weight: 700;
-    font-size: 28px;
-    color: #E8C583;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 34px;
+    color: var(--text);
     text-decoration: none;
-    letter-spacing: -0.3px;
+    letter-spacing: 0.4px;
+    line-height: 1;
   }
 
   .logo span {
-    color: #D9A860;
-    font-weight: 400;
+    color: var(--gold-light);
+    font-weight: 500;
   }
 
   .nav-links {
+    flex: 1;
     display: flex;
-    gap: 28px;
+    justify-content: space-evenly;
     list-style: none;
     align-items: center;
   }
 
   .nav-links a {
-    color: var(--gray-700);
+    color: var(--text);
     text-decoration: none;
     font-size: 15px;
+    line-height: 1;
     transition: color 0.2s;
   }
 
-  .nav-links a:hover { color: #E8C583; }
+  .nav-links a:hover { color: var(--gold-light); }
 
   .nav-cta {
-    background:
-      linear-gradient(90deg, rgba(255, 249, 232, 0) 30%, rgba(255, 249, 230, 0.35) 50%, rgba(255, 249, 232, 0) 70%),
-      linear-gradient(90deg, #C0944F 0%, #DFB26C 40%, #F5DBA0 50%, #DFB26C 60%, #C0944F 100%);
-    color: #3B2A12 !important;
-    padding: 10px 22px;
+    position: relative;
+    background: linear-gradient(180deg, #E8D5A0 0%, #C9A961 48%, #A98A4C 100%);
+    color: #2A1F10 !important;
+    text-decoration: none;
+    padding: 10px 24px;
     border-radius: 999px;
     font-weight: 700;
-    border: 1px solid rgba(255, 218, 150, 0.55);
-    box-shadow: inset 0 1px 1px rgba(255,255,255,.35), inset 0 -2px 4px rgba(60,30,0,.35), 0 4px 12px rgba(120,70,20,.22);
-    text-shadow: 0 1px 0 rgba(255,245,220,.3);
+    border: 1px solid rgba(255, 235, 190, 0.55);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.55),
+      inset 0 -2px 5px rgba(90, 60, 10, 0.35),
+      0 5px 14px rgba(0, 0, 0, 0.35);
+    text-shadow: 0 1px 0 rgba(255, 250, 235, 0.35);
+    transition: transform 0.15s, box-shadow 0.2s;
   }
 
   .nav-cta:hover {
-    background:
-      linear-gradient(90deg, rgba(255, 249, 232, 0) 30%, rgba(255, 249, 230, 0.45) 50%, rgba(255, 249, 232, 0) 70%),
-      linear-gradient(90deg, #CA9C58 0%, #E4BD78 40%, #F8E0A6 50%, #E4BD78 60%, #CA9C58 100%);
-    color: #3B2A12 !important;
-    transform: translateY(-1px);
+    background: linear-gradient(180deg, #F5E3B8 0%, #D9BC77 48%, #B8975A 100%);
+    color: #2A1F10 !important;
+    transform: translateY(-2px);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.6),
+      inset 0 -2px 5px rgba(90, 60, 10, 0.35),
+      0 8px 18px rgba(201, 169, 97, 0.35);
   }
 
   .burger {
@@ -129,62 +160,52 @@
     background: none;
     border: none;
     font-size: 26px;
-    color: #D9A860;
+    color: var(--gold);
     cursor: pointer;
   }
 
+  .mobile-cta { display: none; }
+
   /* ---------- Hero ---------- */
   .hero {
-    padding: 96px 0 72px;
+    padding: 53px 0 71px;
     text-align: center;
     background:
-      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(217, 168, 96, 0.16), transparent 70%);
+      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201, 169, 97, 0.14), transparent 70%);
   }
 
   .eyebrow {
     display: inline-block;
-    background:
-      linear-gradient(90deg, rgba(255, 249, 232, 0) 30%, rgba(255, 249, 230, 0.35) 50%, rgba(255, 249, 232, 0) 70%),
-      linear-gradient(90deg, #C0944F 0%, #DFB26C 40%, #F5DBA0 50%, #DFB26C 60%, #C0944F 100%);
-    color: #3B2A12;
-    font-weight: 700;
+    background: rgba(201, 169, 97, 0.08);
+    color: var(--gold-light);
+    font-weight: 600;
     font-size: 14px;
     padding: 8px 20px;
     border-radius: 999px;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
     letter-spacing: 0.4px;
-    border: 1px solid rgba(255, 218, 150, 0.55);
-    box-shadow: inset 0 1px 1px rgba(255,255,255,.35), inset 0 -2px 4px rgba(60,30,0,.35), 0 5px 14px rgba(120,70,20,.22);
-    text-shadow: 0 1px 0 rgba(255,245,220,.3);
+    border: 1px solid rgba(201, 169, 97, 0.45);
   }
 
   .hero h1 {
-    font-size: clamp(34px, 6vw, 58px);
-    line-height: 1.12;
-    font-weight: 700;
-    letter-spacing: -1px;
+    font-size: clamp(38px, 6vw, 62px);
+    line-height: 1.1;
+    font-weight: 600;
+    letter-spacing: -0.5px;
     max-width: 840px;
     margin: 0 auto 20px;
   }
 
   .hero h1 em {
     font-style: normal;
-    color: var(--olive-600);
+    color: var(--gold-light);
   }
 
   .hero p.lead {
     max-width: 680px;
     margin: 0 auto 36px;
     font-size: clamp(16px, 2.4vw, 19px);
-    color: var(--gray-700);
-  }
-
-  .hero-btns {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 64px;
+    color: #AAA49D;
   }
 
   .btn {
@@ -198,33 +219,19 @@
   }
 
   .btn-primary {
-    background:
-      linear-gradient(90deg, rgba(255, 249, 232, 0) 30%, rgba(255, 249, 230, 0.35) 50%, rgba(255, 249, 232, 0) 70%),
-      linear-gradient(90deg, #C0944F 0%, #DFB26C 40%, #F5DBA0 50%, #DFB26C 60%, #C0944F 100%);
-    color: #3B2A12;
+    background: linear-gradient(180deg, #D4B26E 0%, #BA9554 55%, #9A7C40 100%);
+    color: #241A0E;
     font-weight: 700;
-    border: 1px solid rgba(255, 218, 150, 0.55);
-    box-shadow: inset 0 1px 1px rgba(255,255,255,.35), inset 0 -2px 4px rgba(60,30,0,.35), 0 8px 18px rgba(120,70,20,.25);
-    text-shadow: 0 1px 0 rgba(255,245,220,.3);
+    font-size: 17px;
+    padding: 16px 46px;
+    border: 1px solid rgba(201, 169, 97, 0.45);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
   }
   .btn-primary:hover {
-    background:
-      linear-gradient(90deg, rgba(255, 249, 232, 0) 30%, rgba(255, 249, 230, 0.45) 50%, rgba(255, 249, 232, 0) 70%),
-      linear-gradient(90deg, #CA9C58 0%, #E4BD78 40%, #F8E0A6 50%, #E4BD78 60%, #CA9C58 100%);
-    transform: translateY(-2px);
-    box-shadow: inset 0 1px 1px rgba(255,255,255,.4), inset 0 -2px 4px rgba(60,30,0,.35), 0 12px 24px rgba(120,70,20,.32);
-  }
-
-  .btn-secondary {
-    background: rgba(42, 29, 14, 0.6);
-    color: #EBD9A8;
-    border: 1.5px solid var(--olive-600);
-    font-weight: 600;
-  }
-  .btn-secondary:hover {
-    background: rgba(56, 39, 18, 0.8);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(180deg, #E0BF7E 0%, #C8A45E 55%, #AA8A48 100%);
+    color: #241A0E;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.4);
   }
 
   .features {
@@ -235,31 +242,40 @@
   }
 
   .feature {
-    background: linear-gradient(180deg, #33240F 0%, #231709 100%);
+    background: var(--bg-card);
     border-radius: var(--radius);
     padding: 28px;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 6px 18px rgba(122, 84, 32, 0.12);
-    border: 1px solid var(--beige-300);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 6px 18px rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--gold-dim);
   }
 
-  .feature .icon {
-    font-size: 26px;
+  .feature .icon svg {
+    width: 24px;
+    height: 24px;
+    display: block;
+    color: var(--gold);
     margin-bottom: 12px;
   }
 
   .feature h3 {
-    font-size: 18px;
-    color: #E4C483;
+    font-size: 20px;
+    color: #F1E5C3;
     margin-bottom: 8px;
   }
 
   .feature p {
     font-size: 15px;
-    color: var(--gray-700);
+    color: #B9B5AE;
   }
 
   /* ---------- Sections ---------- */
-  section { padding: 88px 0; }
+  section { padding: 112px 0; }
+  #about { padding: 56px 0; } /* 2-й экран — высота −30% */
+  #services { padding: 46px 0 57px; } /* 3-й экран — верх −20% */
+  #portfolio { padding: 67px 0; } /* 4-й экран — высота −40% */
+  #prices { padding: 62px 0; } /* 5-й экран — высота −45% */
+  #process { padding: 50px 0 0; margin-bottom: -67px; } /* 6-й экран — вертикаль −20% сверху и снизу */
+  #contacts { padding: 62px 0; } /* последний экран — высота −45% */
 
   .section-head {
     text-align: center;
@@ -268,17 +284,22 @@
   }
 
   .section-head h2 {
-    font-size: clamp(28px, 4vw, 40px);
-    letter-spacing: -0.5px;
+    font-size: clamp(32px, 4.5vw, 46px);
+    letter-spacing: 0;
     margin-bottom: 14px;
   }
 
-  .section-head h2 em { font-style: normal; color: var(--olive-600); }
+  .section-head h2 em { font-style: normal; color: var(--gold-light); }
 
-  .section-head p { color: var(--gray-700); font-size: 17px; }
+  .section-head p { color: #B9B5AE; font-size: 17px; }
 
-  .alt-bg { background: rgba(40, 28, 14, 0.35); }
-  .alt-bg-2 { background: rgba(54, 38, 17, 0.30); }
+  #about .section-head p { color: #B3AEA7; }
+  #services .section-head p { color: #B3AEA7; }
+  #portfolio .section-head p { color: #B9B5AE; }
+  #prices .section-head p { color: #B9B5AE; }
+
+  .alt-bg { background: #201914; } /* 2, 4, 6, 8-й экраны — без светлых пятен (слой плотный) */
+  .alt-bg-2 { background: rgba(36, 28, 22, 0.45); }
 
   /* ---------- About ---------- */
   .about-grid {
@@ -288,19 +309,19 @@
     align-items: start;
   }
 
-  .about-text p { margin-bottom: 16px; color: var(--gray-700); }
-  .about-text p strong { color: var(--gray-900); }
+  .about-text p { margin-bottom: 16px; color: #B3AEA7; }
+  .about-text p strong { color: #F9F6F1; }
 
   .about-card {
-    background: linear-gradient(180deg, #362713 0%, #241A0C 100%);
-    border: 1px solid var(--beige-300);
+    background: var(--bg-card);
+    border: 1px solid var(--gold-dim);
     border-radius: var(--radius);
     padding: 28px;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), var(--shadow);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), var(--shadow);
   }
 
   .about-card h3 {
-    color: #E4C483;
+    color: var(--gold-light);
     font-size: 18px;
     margin-bottom: 14px;
   }
@@ -309,9 +330,9 @@
 
   .about-card li {
     padding: 10px 0;
-    border-bottom: 1px dashed var(--beige-300);
+    border-bottom: 1px dashed var(--gold-dim);
     font-size: 15px;
-    color: var(--gray-700);
+    color: #B9B5AE;
   }
 
   .about-card li:last-child { border-bottom: none; }
@@ -324,17 +345,18 @@
   }
 
   .niches span {
-    background:
-      linear-gradient(90deg, rgba(255, 249, 232, 0) 30%, rgba(255, 249, 230, 0.35) 50%, rgba(255, 249, 232, 0) 70%),
-      linear-gradient(90deg, #C0944F 0%, #DFB26C 40%, #F5DBA0 50%, #DFB26C 60%, #C0944F 100%);
-    border: 1px solid rgba(255, 218, 150, 0.5);
-    color: #3B2A12;
+    background: rgba(201, 169, 97, 0.08);
+    border: 1px solid rgba(201, 169, 97, 0.4);
+    color: var(--gold-light);
     padding: 6px 14px;
     border-radius: 999px;
     font-size: 14px;
     font-weight: 600;
-    box-shadow: inset 0 1px 1px rgba(255,255,255,.3), inset 0 -1px 2px rgba(60,30,0,.3), 0 3px 8px rgba(120,70,20,.18);
-    text-shadow: 0 1px 0 rgba(255,245,220,.3);
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .niches span:hover {
+    background: rgba(201, 169, 97, 0.16);
+    border-color: var(--gold);
   }
 
   /* ---------- Services ---------- */
@@ -345,17 +367,18 @@
   }
 
   .service-card {
-    background: linear-gradient(180deg, #362713 0%, #271B0C 100%);
-    border: 1px solid var(--beige-300);
+    background: var(--bg-card);
+    border: 1px solid var(--gold-dim);
     border-radius: var(--radius);
     padding: 32px;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), var(--shadow);
-    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
   }
 
   .service-card:hover {
     transform: translateY(-4px);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 12px 28px rgba(122, 84, 32, 0.18);
+    border-color: rgba(201, 169, 97, 0.5);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 14px 30px rgba(0, 0, 0, 0.35);
   }
 
   .service-card .num {
@@ -371,23 +394,25 @@
     margin: 10px 0 6px;
   }
 
-  .service-card > p { color: var(--gray-700); margin-bottom: 16px; }
+  .service-card > p { color: #B9B5AE; margin-bottom: 16px; }
 
   .service-card ul { list-style: none; }
 
   .service-card li {
     padding: 6px 0 6px 28px;
     position: relative;
-    color: var(--gray-700);
+    color: #B9B5AE;
     font-size: 15px;
   }
 
   .service-card li::before {
-    content: "✔";
+    content: "";
     position: absolute;
     left: 0;
-    color: var(--olive-600);
-    font-weight: 700;
+    top: 9px;
+    width: 14px;
+    height: 14px;
+    background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23C9A961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpolyline points="20 6 9 17 4 12"/%3E%3C/svg%3E') center / contain no-repeat;
   }
 
   .formats {
@@ -398,16 +423,16 @@
   }
 
   .format-box {
-    background: linear-gradient(180deg, #33240F 0%, #231709 100%);
+    background: var(--bg-card);
     border-radius: var(--radius);
     padding: 24px;
-    border: 1px solid var(--beige-300);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 6px 18px rgba(122, 84, 32, 0.10);
+    border: 1px solid var(--gold-dim);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 6px 18px rgba(0, 0, 0, 0.25);
   }
 
   .format-box h4 {
-    color: #E4C483;
-    font-size: 16px;
+    color: var(--gold-light);
+    font-size: 17px;
     margin-bottom: 12px;
   }
 
@@ -419,27 +444,24 @@
 
   .format-box td {
     padding: 8px 0;
-    border-bottom: 1px dashed var(--beige-300);
-    color: var(--gray-700);
+    border-bottom: 1px dashed var(--gold-dim);
+    color: #B9B5AE;
     vertical-align: top;
   }
 
   .format-box tr:last-child td { border-bottom: none; }
 
-  .format-box td:first-child { font-weight: 600; color: var(--gray-900); white-space: nowrap; padding-right: 12px; }
+  .format-box td:first-child { font-weight: 600; color: #F9F6F1; white-space: nowrap; padding-right: 12px; }
 
   .note {
     margin-top: 24px;
-    padding: 16px 22px;
+    padding: 18px 24px;
     text-align: center;
-    background:
-      linear-gradient(90deg, rgba(255, 250, 235, 0) 32%, rgba(255, 250, 230, 0.35) 50%, rgba(255, 250, 235, 0) 68%),
-      linear-gradient(90deg, #E3CB98 0%, #EBD5A4 50%, #E3CB98 100%);
+    background: rgba(201, 169, 97, 0.06);
+    border: 1px solid var(--gold-dim);
     border-radius: var(--radius);
-    color: #4A3413;
+    color: #B9B5AE;
     font-size: 15px;
-    border-left: 4px solid var(--olive-800);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.45);
   }
 
   /* ---------- Portfolio ---------- */
@@ -450,13 +472,19 @@
   }
 
   .work {
-    background: linear-gradient(180deg, #33240F 0%, #231709 100%);
-    border: 1px solid var(--beige-300);
+    background: var(--bg-card);
+    border: 1px solid var(--gold-dim);
     border-radius: var(--radius);
     overflow: hidden;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), var(--shadow);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), var(--shadow);
     display: flex;
     flex-direction: column;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+
+  .work:hover {
+    transform: translateY(-4px);
+    border-color: rgba(201, 169, 97, 0.5);
   }
 
   .work video {
@@ -477,21 +505,29 @@
     letter-spacing: 0.8px;
   }
 
-  .work-body h3 { font-size: 20px; margin: 8px 0 10px; }
+  .work-body h3 { font-size: 20px; margin: 8px 0 10px; color: #F9F6F1; }
 
-  .work-body p { font-size: 15px; color: var(--gray-700); margin-bottom: 10px; }
+  .work-body p { font-size: 15px; color: #B9B5AE; margin-bottom: 10px; }
 
   .work-body .result {
     margin-top: auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
     font-size: 14.5px;
-    color: #4A3413;
-    background:
-      linear-gradient(90deg, rgba(255, 250, 238, 0) 32%, rgba(255, 250, 238, 0.35) 50%, rgba(255, 250, 238, 0) 68%),
-      linear-gradient(90deg, #E8CA96 0%, #F1DBAC 50%, #E8CA96 100%);
-    border: 1px solid rgba(255, 224, 170, 0.6);
+    color: #B9B5AE;
+    background: rgba(201, 169, 97, 0.06);
+    border: 1px solid var(--gold-dim);
     border-radius: 10px;
     padding: 10px 14px;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.5), inset 0 -1px 2px rgba(90,60,10,.15);
+  }
+
+  .work-body .result svg {
+    width: 15px;
+    height: 15px;
+    flex: none;
+    margin-top: 1px;
+    color: var(--gold);
   }
 
   /* ---------- Prices ---------- */
@@ -503,23 +539,22 @@
   }
 
   .price-card {
-    background: linear-gradient(180deg, #33240F 0%, #231709 100%);
-    border: 1px solid var(--beige-300);
+    background: var(--bg-card);
+    border: 1px solid var(--gold-dim);
     border-radius: var(--radius);
     padding: 32px 28px;
     display: flex;
     flex-direction: column;
     position: relative;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 6px 18px rgba(122, 84, 32, 0.12);
-    transition: transform 0.2s;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 6px 18px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s, border-color 0.2s;
   }
 
-  .price-card:hover { transform: translateY(-4px); }
+  .price-card:hover { transform: translateY(-4px); border-color: rgba(201, 169, 97, 0.5); }
 
   .price-card.featured {
-    border: 2px solid var(--olive-600);
-    background: linear-gradient(180deg, #3A2A12 0%, #2A1D0E 100%);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 0 0 4px rgba(217, 168, 96, 0.12), 0 10px 26px rgba(0, 0, 0, 0.35);
+    border: 1px solid var(--gold);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 0 0 4px rgba(201, 169, 97, 0.1), 0 14px 32px rgba(0, 0, 0, 0.4);
   }
 
   .price-card .badge {
@@ -527,29 +562,24 @@
     top: -14px;
     left: 50%;
     transform: translateX(-50%);
-    background:
-      linear-gradient(90deg, rgba(255, 249, 232, 0) 30%, rgba(255, 249, 230, 0.35) 50%, rgba(255, 249, 232, 0) 70%),
-      linear-gradient(90deg, #C0944F 0%, #DFB26C 40%, #F5DBA0 50%, #DFB26C 60%, #C0944F 100%);
-    color: #3B2A12;
+    background: var(--gold);
+    color: #1A1410;
     font-size: 12.5px;
     font-weight: 800;
     padding: 6px 16px;
     border-radius: 999px;
     white-space: nowrap;
-    border: 1px solid rgba(255, 218, 150, 0.55);
-    box-shadow: inset 0 1px 1px rgba(255,255,255,.35), inset 0 -2px 4px rgba(60,30,0,.35), 0 5px 14px rgba(120,70,20,.25);
-    text-shadow: 0 1px 0 rgba(255,245,220,.3);
     letter-spacing: 0.3px;
   }
 
-  .price-card h3 { font-size: 22px; margin-bottom: 4px; }
+  .price-card h3 { font-size: 22px; margin-bottom: 4px; color: #F9F6F1; }
 
-  .price-card .sub { color: var(--gray-700); font-size: 14px; margin-bottom: 18px; }
+  .price-card .sub { color: #B9B5AE; font-size: 14px; margin-bottom: 18px; }
 
-  .price { font-size: 32px; font-weight: 800; color: #E8C58A; margin-bottom: 4px; }
-  .price small { font-size: 15px; font-weight: 400; color: var(--gray-700); }
+  .price { font-size: 32px; font-weight: 800; color: var(--gold-light); margin-bottom: 4px; }
+  .price small { font-size: 15px; font-weight: 400; color: #B9B5AE; }
 
-  .price-note { font-size: 13.5px; color: var(--gray-700); margin-bottom: 18px; }
+  .price-note { font-size: 13.5px; color: #B9B5AE; margin-bottom: 18px; }
 
   .price-card ul { list-style: none; flex: 1; margin: 6px 0 22px; }
 
@@ -557,24 +587,36 @@
     padding: 7px 0 7px 26px;
     position: relative;
     font-size: 15px;
-    color: var(--gray-700);
+    color: #B9B5AE;
   }
 
   .price-card li::before {
-    content: "✔";
+    content: "";
     position: absolute;
     left: 0;
-    color: var(--olive-600);
-    font-weight: 700;
+    top: 9px;
+    width: 14px;
+    height: 14px;
+    background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23C9A961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpolyline points="20 6 9 17 4 12"/%3E%3C/svg%3E') center / contain no-repeat;
   }
 
   .price-card .btn { text-align: center; display: block; }
 
   .prices-foot {
     text-align: center;
-    color: var(--gray-700);
+    color: #B9B5AE;
     margin-top: 32px;
     font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .prices-foot svg {
+    width: 16px;
+    height: 16px;
+    color: var(--gold);
+    flex: none;
   }
 
   /* ---------- How I work ---------- */
@@ -586,77 +628,107 @@
   }
 
   .step {
-    background: linear-gradient(180deg, #33240F 0%, #231709 100%);
-    border: 1px solid var(--beige-300);
+    background: var(--bg-card);
+    border: 1px solid var(--gold-dim);
     border-radius: var(--radius);
     padding: 26px;
     position: relative;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), var(--shadow);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), var(--shadow);
   }
 
   .step .n {
-    font-size: 34px;
-    font-weight: 800;
-    color: var(--olive-600);
-    opacity: 0.35;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--gold);
+    opacity: 0.4;
     line-height: 1;
     margin-bottom: 14px;
   }
 
-  .step h4 { font-size: 17px; margin-bottom: 8px; color: #E4C483; }
-  .step p { font-size: 14.5px; color: var(--gray-700); }
+  .step h4 { font-size: 18px; margin-bottom: 8px; color: var(--gold-light); }
+  .step p { font-size: 14.5px; color: #B9B5AE; }
 
   .workflow-note {
-    margin-top: 32px;
+    margin-top: 16px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
 
   .workflow-note .box {
-    background:
-      linear-gradient(90deg, rgba(255, 250, 235, 0) 32%, rgba(255, 250, 230, 0.35) 50%, rgba(255, 250, 235, 0) 68%),
-      linear-gradient(90deg, #E3CB98 0%, #EBD5A4 50%, #E3CB98 100%);
-    border: 1px solid var(--beige-300);
+    background: var(--bg-card);
+    border: 1px solid var(--gold-dim);
     border-radius: var(--radius);
     padding: 22px 26px;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.45);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
   }
 
-  .workflow-note .box h4 { color: var(--olive-800); margin-bottom: 8px; font-size: 16px; }
-  .workflow-note .box p, .workflow-note .box li { font-size: 14.5px; color: #4A3413; }
+  .workflow-note .box h4 { color: var(--gold-light); margin-bottom: 8px; font-size: 17px; }
+  .workflow-note .box p, .workflow-note .box li { font-size: 14.5px; color: #B9B5AE; }
   .workflow-note ul { list-style: none; margin-top: 4px; }
   .workflow-note li { padding: 3px 0; }
   .workflow-note li::before { content: "· "; color: var(--olive-600); font-weight: 700; }
 
   /* ---------- Reviews / FAQ ---------- */
-  .empty-block {
-    background: linear-gradient(180deg, #33240F 0%, #231709 100%);
-    border: 1.5px dashed var(--olive-600);
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .review-card {
+    background: var(--bg-card);
+    border: 1px solid var(--gold-dim);
     border-radius: var(--radius);
-    padding: 48px 24px;
-    text-align: center;
-    color: var(--gray-700);
-    font-size: 16px;
+    padding: 28px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), var(--shadow);
+  }
+
+  .review-card .quote svg {
+    width: 26px;
+    height: 26px;
+    display: block;
+    margin-bottom: 14px;
+    color: var(--gold);
+  }
+
+  .review-card p {
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: #B9B5AE;
+    margin-bottom: 18px;
+  }
+
+  .review-card .author {
+    font-family: var(--font-heading);
+    color: var(--gold-light);
+    font-weight: 600;
+    font-size: 16.5px;
+    letter-spacing: 0.3px;
   }
 
   .faq-list { max-width: 760px; margin: 0 auto; }
 
   details {
-    background: linear-gradient(180deg, #33240F 0%, #231709 100%);
-    border: 1px solid var(--beige-300);
+    background: var(--bg-card);
+    border: 1px solid var(--gold-dim);
     border-radius: 14px;
     margin-bottom: 12px;
     overflow: hidden;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transition: border-color 0.2s;
   }
+
+  details[open] { border-color: rgba(201, 169, 97, 0.5); }
 
   summary {
     padding: 20px 24px;
     cursor: pointer;
     font-weight: 600;
-    font-size: 16.5px;
-    color: var(--gray-900);
+    font-size: 20.5px;
+    color: #F9F6F1;
     list-style: none;
     display: flex;
     justify-content: space-between;
@@ -677,7 +749,7 @@
 
   details p {
     padding: 0 24px 20px;
-    color: var(--gray-700);
+    color: #B9B5AE;
     font-size: 15.5px;
   }
 
@@ -691,37 +763,54 @@
   }
 
   .contact-card {
-    background: linear-gradient(180deg, #33240F 0%, #231709 100%);
+    background: var(--bg-card);
     border-radius: var(--radius);
     padding: 28px;
     text-align: center;
-    border: 1px solid var(--beige-300);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), var(--shadow);
+    border: 1px solid var(--gold-dim);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), var(--shadow);
   }
 
-  .contact-card .icon { font-size: 28px; margin-bottom: 10px; }
-  .contact-card h4 { color: #E4C483; margin-bottom: 6px; }
-  .contact-card p { color: var(--gray-700); font-size: 15px; word-break: break-word; }
+  .contact-card .icon {
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  .contact-card .icon svg {
+    width: 28px;
+    height: 28px;
+    display: block;
+    color: var(--gold);
+  }
+  .contact-card .icon .vk-mark { width: 36px; height: 36px; }
+  .contact-card h4 { color: var(--gold-light); margin-bottom: 6px; }
+  .contact-card h4.kwork { font-size: 20px; }
+  .contact-card p { color: #B9B5AE; font-size: 15px; word-break: break-word; }
 
   .contacts-hint {
     text-align: center;
-    background:
-      linear-gradient(90deg, rgba(255, 250, 235, 0) 32%, rgba(255, 250, 230, 0.35) 50%, rgba(255, 250, 235, 0) 68%),
-      linear-gradient(90deg, #E3CB98 0%, #EBD5A4 50%, #E3CB98 100%);
-    border: 1px solid var(--beige-300);
+    background: rgba(201, 169, 97, 0.06);
+    border: 1px solid var(--gold-dim);
     border-radius: var(--radius);
     padding: 22px 28px;
     max-width: 760px;
-    margin: 0 auto;
-    color: #4A3413;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.45);
+    margin: 0 auto 32px;
+    color: #B9B5AE;
   }
+
+  .jcta {
+    text-align: center;
+    margin-top: 44px;
+  }
+  .jcta .btn-primary { padding: 18px 52px; font-size: 20px; }
 
   /* ---------- Footer ---------- */
   footer {
     padding: 36px 0;
-    border-top: 1px solid var(--beige-300);
-    background: rgba(46, 33, 18, 0.7);
+    border-top: 1px solid var(--gold-dim);
+    background: rgba(26, 20, 16, 0.7);
   }
 
   footer .container {
@@ -732,10 +821,10 @@
     flex-wrap: wrap;
   }
 
-  footer p { color: var(--gray-700); font-size: 14.5px; }
+  footer p { color: #B9B5AE; font-size: 14.5px; }
 
-  .footer-links a { color: var(--gray-700); text-decoration: none; margin-left: 18px; font-size: 14.5px; }
-  .footer-links a:hover { color: #E8C583; }
+  .footer-links a { color: #B9B5AE; text-decoration: none; margin-left: 18px; font-size: 14.5px; }
+  .footer-links a:hover { color: var(--gold-light); }
 
   /* ---------- Animations & polish ---------- */
   .hero { position: relative; overflow: hidden; }
@@ -743,14 +832,12 @@
   /* Entrance for hero content */
   .hero .eyebrow,
   .hero h1,
-  .hero p.lead,
-  .hero .hero-btns {
+  .hero p.lead {
     animation: riseIn 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) both;
   }
   .hero .eyebrow { animation-delay: 0.05s; }
   .hero h1      { animation-delay: 0.15s; }
   .hero p.lead  { animation-delay: 0.28s; }
-  .hero .hero-btns { animation-delay: 0.40s; }
 
   @keyframes riseIn {
     from { opacity: 0; transform: translateY(26px); }
@@ -787,7 +874,7 @@
     100% { transform: translateY(-96vh) scale(0.5); opacity: 0; }
   }
 
-  /* Animated underline under section headings */
+  /* Thin gold line under section headings */
   .section-head h2 { position: relative; padding-bottom: 16px; }
   .section-head h2::after {
     content: "";
@@ -795,32 +882,15 @@
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
-    width: 72px;
-    height: 3px;
-    border-radius: 2px;
-    background: linear-gradient(90deg, #C69256, #EFCF90, #C69256, #EFCF90);
-    background-size: 200% 100%;
-    animation: shineSlide 4.5s linear infinite;
-  }
-  @keyframes shineSlide {
-    0%   { background-position: 0% 50%; }
-    100% { background-position: -200% 50%; }
+    width: 56px;
+    height: 1px;
+    background: var(--gold);
   }
 
-  /* Shimmering gold accent words */
   .hero h1 em,
   .section-head h2 em {
     font-style: normal;
-    background: linear-gradient(90deg, #D9A860 0%, #F5DFA8 35%, #D9A860 65%, #F5DFA8 100%);
-    background-size: 250% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: shimmerText 6s linear infinite;
-  }
-  @keyframes shimmerText {
-    0%   { background-position: 0% center; }
-    100% { background-position: -250% center; }
+    color: var(--gold-light);
   }
 
   /* Nav link animated underline */
@@ -854,7 +924,7 @@
   .js-reveal .workflow-note .box,
   .js-reveal .contact-card,
   .js-reveal .contacts-hint,
-  .js-reveal .empty-block,
+  .js-reveal .review-card,
   .js-reveal .about-text,
   .js-reveal .about-card {
     opacity: 0;
@@ -886,7 +956,7 @@
     .js-reveal .workflow-note .box,
     .js-reveal .contact-card,
     .js-reveal .contacts-hint,
-    .js-reveal .empty-block,
+    .js-reveal .review-card,
     .js-reveal .about-text,
     .js-reveal .about-card {
       opacity: 1;
@@ -895,7 +965,7 @@
       animation: none;
     }
     body { animation: none; }
-    .hero .eyebrow, .hero h1, .hero p.lead, .hero .hero-btns { animation: none; }
+    .hero .eyebrow, .hero h1, .hero p.lead { animation: none; }
     .sparkle { display: none; }
   }
 
@@ -905,11 +975,14 @@
     .about-grid, .formats, .workflow-note { grid-template-columns: 1fr; }
     .steps { grid-template-columns: repeat(2, 1fr); }
     .contacts-grid { grid-template-columns: 1fr; max-width: 420px; }
+    .reviews-grid { grid-template-columns: 1fr; max-width: 420px; }
   }
 
   @media (max-width: 640px) {
     .nav-links { display: none; }
+    .nav { justify-content: space-between; gap: 0; }
     .burger { display: block; }
+    .desktop-cta { display: none; }
     .nav-links.open {
       display: flex;
       flex-direction: column;
@@ -924,8 +997,14 @@
       align-items: flex-start;
     }
     .steps { grid-template-columns: 1fr; }
-    section { padding: 64px 0; }
-    .hero { padding: 64px 0 48px; }
+    section { padding: 72px 0; }
+    #about { padding: 36px 0; }
+    #services { padding: 30px 0 37px; }
+    #portfolio { padding: 43px 0; }
+    #prices { padding: 40px 0; }
+    #process { padding: 32px 0 0; margin-bottom: -43px; }
+    #contacts { padding: 40px 0; }
+    .hero { padding: 32px 0 45px; }
   }
 </style>
 </head>
@@ -943,8 +1022,9 @@
       <li><a href="#prices">Цены</a></li>
       <li><a href="#process">Как я работаю</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contacts" class="nav-cta">Обсудить проект</a></li>
+      <li class="mobile-cta"><a href="#contacts" class="nav-cta">Обсудить проект</a></li>
     </ul>
+    <a href="#contacts" class="nav-cta desktop-cta">Обсудить проект</a>
   </div>
 </header>
 
@@ -964,24 +1044,20 @@
       <span class="eyebrow">LenaDesign · ИИ-креатор</span>
       <h1>Визуалы и видео <em>с душой</em>, которые продают</h1>
       <p class="lead">Создаю карточки и видео для маркетплейсов (Wildberries, Ozon, Яндекс.Маркет) и соцсетей с помощью нейросетей. Продумываю сюжет, настроение и детали — чтобы ваш товар выделялся и продавался.</p>
-      <div class="hero-btns">
-        <a href="#portfolio" class="btn btn-primary">Посмотреть работы</a>
-        <a href="#contacts" class="btn btn-secondary">Обсудить проект</a>
-      </div>
 
       <div class="features">
         <div class="feature">
-          <div class="icon">🎨</div>
+          <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a10 10 0 1 1 10-10c0 2.2-1.8 3-3 3h-2.2c-1 0-1.8.8-1.8 1.8 0 .5.2 1 .5 1.3.4.4.5.8.5 1.4 0 1.4-1.1 2.5-2 2.5z"/><circle cx="7.5" cy="11.5" r="1"/><circle cx="11" cy="7.5" r="1"/><circle cx="16" cy="9.5" r="1"/></svg></div>
           <h3>Красиво</h3>
           <p>Тёплые и живые визуалы, а не бездушная нейросетевая генерация.</p>
         </div>
         <div class="feature">
-          <div class="icon">⚡</div>
+          <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
           <h3>Быстро</h3>
           <p>Карточка или ролик — от 1–2 дней. Срочные заказы — по договорённости.</p>
         </div>
         <div class="feature">
-          <div class="icon">📈</div>
+          <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
           <h3>Полезно для бизнеса</h3>
           <p>Визуал работает на продажи — останавливает скролл и вызывает желание узнать больше о товаре.</p>
         </div>
@@ -1096,7 +1172,7 @@
             <span class="tag">Видео с аватаром · обучение</span>
             <h3>Видео с говорящим аватаром</h3>
             <p>Задача: оформить контент для образовательного проекта. Видео с аватаром и озвучкой — от 30 секунд до 5 минут. Подходит для презентаций и лид-магнитов.</p>
-            <p class="result">🗣️ Результат: готовый ролик без съёмки — только текст и идея.</p>
+            <p class="result"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Результат: готовый ролик без съёмки — только текст и идея.</p>
           </div>
         </div>
 
@@ -1106,7 +1182,7 @@
             <span class="tag">Карточка · маркетплейсы</span>
             <h3>Кружка — карточка с нуля</h3>
             <p>Задача: сделать полный комплект карточки для нового товара. Собрала от идеи до готового комплекта: главное фото, инфографика, чистые ракурсы и видео.</p>
-            <p class="result">💛 Результат: работа ушла в портфолио — клиенту понравилось.</p>
+            <p class="result"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Результат: работа ушла в портфолио — клиенту понравилось.</p>
           </div>
         </div>
 
@@ -1116,7 +1192,7 @@
             <span class="tag">Карточка + видео · маркетплейсы</span>
             <h3>Наполнитель — карточка и видео с кошкой</h3>
             <p>Задача: выделить товар в выдаче. 5 слайдов с инфографикой + видео с оживлением фото. Синхронизировала звук и добавила анимацию — живо и с юмором.</p>
-            <p class="result">📈 Результат: конверсия карточки с видео — до 23% выше, просмотров в 2–3 раза больше (по данным маркетплейсов).</p>
+            <p class="result"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Результат: конверсия карточки с видео — до 23% выше, просмотров в 2–3 раза больше (по данным маркетплейсов).</p>
           </div>
         </div>
 
@@ -1126,7 +1202,7 @@
             <span class="tag">Короткие видео · соцсети</span>
             <h3>Анимированные ролики для соцсетей</h3>
             <p>Задача: контент, который привлечёт. Анимированные ролики в фирменном стиле — например, видео с богатырём.</p>
-            <p class="result">🎬 Результат: контент удерживает внимание и формирует доверие к продукту.</p>
+            <p class="result"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Результат: контент удерживает внимание и формирует доверие к продукту.</p>
           </div>
         </div>
       </div>
@@ -1152,11 +1228,10 @@
             <li>или 1 короткое видео (до 15 сек)</li>
             <li>Срок: 1–2 дня</li>
           </ul>
-          <a href="#contacts" class="btn btn-primary">Заказать «Старт»</a>
         </div>
 
         <div class="price-card featured">
-          <span class="badge">Хит продаж</span>
+          <span class="badge">Популярное</span>
           <h3>«Бизнес»</h3>
           <div class="sub">Для активных селлеров</div>
           <div class="price">от 6 500 ₽ <small>/ за 3–5 дней</small></div>
@@ -1166,7 +1241,6 @@
             <li>или 5 коротких видео (до 15 сек)</li>
             <li>Срок: 3–5 дней</li>
           </ul>
-          <a href="#contacts" class="btn btn-primary">Заказать «Бизнес»</a>
         </div>
 
         <div class="price-card">
@@ -1179,11 +1253,10 @@
             <li>Приоритетная обработка</li>
             <li>Правки без доплат</li>
           </ul>
-          <a href="#contacts" class="btn btn-primary">Заказать «Премиум»</a>
         </div>
       </div>
 
-      <p class="prices-foot">🚀 Срочные заказы — возможны, но с наценкой. Сроки уточняйте в личном сообщении.</p>
+      <p class="prices-foot"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>Срочные заказы — возможны, но с наценкой. Сроки уточняйте в личном сообщении.</p>
     </div>
   </section>
 
@@ -1246,9 +1319,17 @@
         <h2>Отзывы <em>клиентов</em></h2>
         <p>Несколько слов о работе с LenaDesign.</p>
       </div>
-      <div class="empty-block">
-        ✨ Этот раздел заполняется по мере поступления отзывов.<br>
-        Работаете со мной? Напишите — и я с удовольствием добавлю ваш отзыв сюда.
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="quote"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></svg></div>
+          <p>Заказывала карточку для кружки — новинка, конкуренты кругом. Лена сделала не просто фото, а целую историю: уют, тепло, чай. Карточка сразу стала заметной в выдаче. Продажи пошли в первую же неделю. Спасибо!</p>
+          <div class="author">Анна, селлер WB</div>
+        </div>
+        <div class="review-card">
+          <div class="quote"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></svg></div>
+          <p>Брала карточку + видео с кошкой для древесного наполнителя. Лена поймала настроение: живо, с юмором, но без пошлости. Видео смотрят до конца, конверсия выросла. Работать легко — всё чётко и в срок.</p>
+          <div class="author">Мария, бренд зоотоваров</div>
+        </div>
       </div>
     </div>
   </section>
@@ -1295,23 +1376,27 @@
 
       <div class="contacts-grid">
         <div class="contact-card">
-          <div class="icon">💬</div>
+          <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
           <h4>MAX</h4>
-          <p>Предпочтительный способ связи<br>[укажите @username]</p>
+          <p>Предпочтительный способ связи<br>Скоро</p>
         </div>
         <div class="contact-card">
-          <div class="icon">✉️</div>
-          <h4>Email</h4>
-          <p>[укажите email]</p>
+          <div class="icon"><svg class="vk-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.785 16.241s.288-.032.436-.194c.136-.148.132-.427.132-.427s-.02-1.304.576-1.496c.588-.19 1.341 1.26 2.14 1.818.605.422 1.064.33 1.064.33l2.137-.03s1.117-.071.587-.964c-.043-.073-.308-.661-1.588-1.87-1.34-1.264-1.16-1.059.453-3.246.983-1.332 1.376-2.145 1.253-2.493-.117-.332-.84-.244-.84-.244l-2.406.015s-.178-.025-.31.056c-.13.079-.212.262-.212.262s-.382 1.03-.89 1.907c-1.07 1.85-1.5 1.948-1.675 1.832-.407-.267-.305-1.075-.305-1.649 0-1.793.267-2.54-.522-2.733-.262-.065-.455-.107-1.126-.114-.858-.009-1.585.003-1.996.208-.274.136-.485.44-.356.457.159.021.519.097.71.356.246.334.237 1.085.237 1.085s.142 2.068-.33 2.326c-.324.177-.769-.184-1.724-1.83-.489-.84-.858-1.77-.858-1.77s-.07-.172-.198-.265c-.154-.11-.37-.145-.37-.145l-2.286.015s-.343.01-.469.161c-.112.134-.009.411-.009.411s1.79 4.258 3.817 6.403c1.858 1.967 3.968 1.838 3.968 1.838z"/></svg></div>
+          <h4>VK</h4>
+          <p>Скоро</p>
         </div>
         <div class="contact-card">
-          <div class="icon">💼</div>
-          <h4>Kwork</h4>
-          <p>[ссылка на профиль]</p>
+          <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+          <h4 class="kwork">Kwork</h4>
+          <p>Скоро</p>
         </div>
       </div>
 
       <p class="contacts-hint">Работаем по предоплате. Правки — до 2 итераций бесплатно. Изображения и видео — в форматах PNG / MP4 под вашу площадку.</p>
+
+      <div class="jcta">
+        <a href="#top" class="btn btn-primary">Обсудить проект</a>
+      </div>
     </div>
   </section>
 
@@ -1347,7 +1432,7 @@
   const revealTargets = document.querySelectorAll(
     '.feature, .service-card, .format-box, .work, .price-card, .step, .contact-card, ' +
     '.section-head, .about-text, .about-card, .workflow-note .box, .contacts-hint, ' +
-    '.empty-block'
+    '.review-card'
   );
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
