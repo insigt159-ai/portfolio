@@ -46,7 +46,9 @@
     letter-spacing: -0.2px;
   }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+
+  #top { scroll-margin-top: 84px; }
 
   body {
     font-family: var(--font);
@@ -258,13 +260,13 @@
   }
 
   .feature h3 {
-    font-size: 20px;
+    font-size: 26px;
     color: #F1E5C3;
     margin-bottom: 8px;
   }
 
   .feature p {
-    font-size: 15px;
+    font-size: 16px;
     color: #B9B5AE;
   }
 
@@ -274,8 +276,9 @@
   #services { padding: 46px 0 57px; } /* 3-й экран — верх −20% */
   #portfolio { padding: 67px 0; } /* 4-й экран — высота −40% */
   #prices { padding: 62px 0; } /* 5-й экран — высота −45% */
-  #process { padding: 50px 0 0; margin-bottom: -67px; } /* 6-й экран — вертикаль −20% сверху и снизу */
+  #process { padding: 48px 0 24px; margin-bottom: 0; display: flex; flex-direction: column; justify-content: center; } /* 6-й экран — снизу воздуха −50% (24px) */
   #contacts { padding: 62px 0; } /* последний экран — высота −45% */
+  #reviews { padding-top: 70px; } /* отзывы — воздух сверху */
 
   .section-head {
     text-align: center;
@@ -322,7 +325,7 @@
 
   .about-card h3 {
     color: var(--gold-light);
-    font-size: 18px;
+    font-size: 24px;
     margin-bottom: 14px;
   }
 
@@ -331,7 +334,7 @@
   .about-card li {
     padding: 10px 0;
     border-bottom: 1px dashed var(--gold-dim);
-    font-size: 15px;
+    font-size: 16px;
     color: #B9B5AE;
   }
 
@@ -345,13 +348,12 @@
   }
 
   .niches span {
-    background: rgba(201, 169, 97, 0.08);
-    border: 1px solid rgba(201, 169, 97, 0.4);
-    color: var(--gold-light);
+    background: rgba(198, 161, 60, 0.08);
+    border: 1px solid rgba(201, 167, 73, 0.40);
+    color: #F5F0E8;
     padding: 6px 14px;
     border-radius: 999px;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 15px;
     transition: background 0.2s, border-color 0.2s;
   }
   .niches span:hover {
@@ -382,7 +384,7 @@
   }
 
   .service-card .num {
-    font-size: 14px;
+    font-size: 17px;
     font-weight: 700;
     color: var(--olive-600);
     letter-spacing: 1px;
@@ -432,14 +434,14 @@
 
   .format-box h4 {
     color: var(--gold-light);
-    font-size: 17px;
+    font-size: 22px;
     margin-bottom: 12px;
   }
 
   .format-box table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 14.5px;
+    font-size: 16px;
   }
 
   .format-box td {
@@ -457,8 +459,8 @@
     margin-top: 24px;
     padding: 18px 24px;
     text-align: center;
-    background: rgba(201, 169, 97, 0.06);
-    border: 1px solid var(--gold-dim);
+    background: rgba(209, 175, 76, 0.09);
+    border: 1px solid rgba(213, 183, 91, 0.34);
     border-radius: var(--radius);
     color: #B9B5AE;
     font-size: 15px;
@@ -505,9 +507,9 @@
     letter-spacing: 0.8px;
   }
 
-  .work-body h3 { font-size: 20px; margin: 8px 0 10px; color: #F9F6F1; }
+  .work-body h3 { font-size: 26px; margin: 8px 0 10px; color: #F9F6F1; }
 
-  .work-body p { font-size: 15px; color: #B9B5AE; margin-bottom: 10px; }
+  .work-body p { font-size: 16px; color: #B9B5AE; margin-bottom: 10px; }
 
   .work-body .result {
     margin-top: auto;
@@ -516,8 +518,8 @@
     gap: 8px;
     font-size: 14.5px;
     color: #B9B5AE;
-    background: rgba(201, 169, 97, 0.06);
-    border: 1px solid var(--gold-dim);
+    background: rgba(209, 175, 76, 0.09);
+    border: 1px solid rgba(213, 183, 91, 0.34);
     border-radius: 10px;
     padding: 10px 14px;
   }
@@ -633,6 +635,7 @@
     border-radius: var(--radius);
     padding: 26px;
     position: relative;
+    text-align: center;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), var(--shadow);
   }
 
@@ -645,8 +648,8 @@
     margin-bottom: 14px;
   }
 
-  .step h4 { font-size: 18px; margin-bottom: 8px; color: var(--gold-light); }
-  .step p { font-size: 14.5px; color: #B9B5AE; }
+  .step h4 { font-size: 23px; margin-bottom: 8px; color: var(--gold-light); }
+  .step p { font-size: 16px; color: #B9B5AE; }
 
   .workflow-note {
     margin-top: 16px;
@@ -660,6 +663,7 @@
     border: 1px solid var(--gold-dim);
     border-radius: var(--radius);
     padding: 22px 26px;
+    text-align: center;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
   }
 
@@ -791,8 +795,8 @@
 
   .contacts-hint {
     text-align: center;
-    background: rgba(201, 169, 97, 0.06);
-    border: 1px solid var(--gold-dim);
+    background: rgba(209, 175, 76, 0.09);
+    border: 1px solid rgba(213, 183, 91, 0.34);
     border-radius: var(--radius);
     padding: 22px 28px;
     max-width: 760px;
@@ -1002,8 +1006,9 @@
     #services { padding: 30px 0 37px; }
     #portfolio { padding: 43px 0; }
     #prices { padding: 40px 0; }
-    #process { padding: 32px 0 0; margin-bottom: -43px; }
+    #process { padding: 30px 0 15px; margin-bottom: 0; display: flex; flex-direction: column; justify-content: center; }
     #contacts { padding: 40px 0; }
+    #reviews { padding-top: 46px; }
     .hero { padding: 32px 0 45px; }
   }
 </style>
@@ -1013,7 +1018,7 @@
 <!-- ================= HEADER ================= -->
 <header>
   <div class="container nav">
-    <a href="#top" class="logo">Lena<span>Design</span></a>
+    <a href="#" class="logo">Lena<span>Design</span></a>
     <button class="burger" id="burger" aria-label="Меню">☰</button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">Обо мне</a></li>
@@ -1425,6 +1430,14 @@
   // Закрывать меню при клике по ссылке
   navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  // Логотип: возврат на первый экран — прокрутка к самому верху,
+  // чтобы плашка «LenaDesign · ИИ-креатор» не пряталась под шапку
+  document.querySelector('.logo').addEventListener('click', (e) => {
+    e.preventDefault();
+    navLinks.classList.remove('open');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
   // Анимации при скролле
