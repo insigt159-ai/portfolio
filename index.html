@@ -491,11 +491,99 @@
 
   .work video {
     width: 100%;
+    max-width: 320px;
     aspect-ratio: 1 / 1;
     object-fit: contain;
     background: #000000;
     display: block;
+    margin: 18px auto 0;
   }
+
+  /* Миниатюры фото карточек */
+  .thumbs-label {
+    margin: 14px 0 0;
+    padding: 0 18px;
+    font-size: 12.5px;
+    letter-spacing: 0.4px;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  .thumbs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px 18px 6px;
+  }
+
+  .thumb {
+    width: 96px;
+    height: 96px;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 0;
+    border: 1px solid rgba(213, 183, 91, 0.35);
+    background: #fff;
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .thumb:hover {
+    transform: translateY(-3px);
+    border-color: rgba(201, 169, 97, 0.7);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+  }
+
+  .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Лайтбокс: полноэкранный просмотр фото */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(14, 10, 8, 0.94);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  }
+
+  .lightbox[hidden] { display: none; }
+
+  .lightbox img {
+    max-width: min(900px, 88vw);
+    max-height: 84vh;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  }
+
+  .lb-btn {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(213, 183, 91, 0.45);
+    background: rgba(26, 20, 16, 0.6);
+    color: var(--gold-light);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background 0.2s;
+  }
+
+  .lb-btn:hover { background: rgba(201, 169, 97, 0.25); }
+  .lb-btn svg { width: 18px; height: 18px; }
+  .lb-close { top: 20px; right: 20px; }
+  .lb-prev { left: 16px; top: 50%; transform: translateY(-50%); }
+  .lb-next { right: 16px; top: 50%; transform: translateY(-50%); }
 
   .work-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
 
@@ -1174,7 +1262,7 @@
 
       <div class="portfolio-grid">
         <div class="work">
-          <video src="аватар.mp4" controls muted loop preload="metadata"></video>
+          <video src="video/avatar.mp4" controls muted loop preload="metadata"></video>
           <div class="work-body">
             <span class="tag">Видео с аватаром · обучение</span>
             <h3>Видео с говорящим аватаром</h3>
@@ -1184,7 +1272,23 @@
         </div>
 
         <div class="work">
-          <video src="кружка.mp4" controls muted loop preload="metadata"></video>
+          <video src="video/bogatyr.mp4" controls muted loop preload="metadata"></video>
+          <div class="work-body">
+            <span class="tag">Короткие видео · соцсети</span>
+            <h3>Анимированные ролики для соцсетей</h3>
+            <p>Задача: контент, который привлечёт. Анимированные ролики в фирменном стиле — например, видео с богатырём.</p>
+            <p class="result"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Результат: контент удерживает внимание и формирует доверие к продукту.</p>
+          </div>
+        </div>
+
+        <div class="work gallery-card">
+          <video src="video/mug.mp4" controls muted loop preload="metadata"></video>
+          <div class="thumbs-label">Фото карточки — нажми, чтобы рассмотреть</div>
+          <div class="thumbs">
+            <button class="thumb" type="button"><img src="images/mug-1.jpg" alt="Кружка — фото 1"></button>
+            <button class="thumb" type="button"><img src="images/mug-2.jpg" alt="Кружка — фото 2"></button>
+            <button class="thumb" type="button"><img src="images/mug-3.jpg" alt="Кружка — фото 3"></button>
+          </div>
           <div class="work-body">
             <span class="tag">Карточка · маркетплейсы</span>
             <h3>Кружка — карточка с нуля</h3>
@@ -1193,23 +1297,20 @@
           </div>
         </div>
 
-        <div class="work">
-          <video src="наполнитель.mp4" controls muted loop preload="metadata"></video>
+        <div class="work gallery-card">
+          <video src="video/filler.mp4" controls muted loop preload="metadata"></video>
+          <div class="thumbs-label">Фото карточки — нажми, чтобы рассмотреть</div>
+          <div class="thumbs">
+            <button class="thumb" type="button"><img src="images/filler-1.jpg" alt="Наполнитель — фото 1"></button>
+            <button class="thumb" type="button"><img src="images/filler-2.jpg" alt="Наполнитель — фото 2"></button>
+            <button class="thumb" type="button"><img src="images/filler-3.jpg" alt="Наполнитель — фото 3"></button>
+            <button class="thumb" type="button"><img src="images/filler-4.jpg" alt="Наполнитель — фото 4"></button>
+          </div>
           <div class="work-body">
             <span class="tag">Карточка + видео · маркетплейсы</span>
             <h3>Наполнитель — карточка и видео с кошкой</h3>
-            <p>Задача: выделить товар в выдаче. 5 слайдов с инфографикой + видео с оживлением фото. Синхронизировала звук и добавила анимацию — живо и с юмором.</p>
+            <p>Задача: выделить товар в выдаче. 4 слайда с инфографикой + видео с оживлением фото. Синхронизировала звук и добавила анимацию — живо и с юмором.</p>
             <p class="result"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Результат: конверсия карточки с видео — до 23% выше, просмотров в 2–3 раза больше (по данным маркетплейсов).</p>
-          </div>
-        </div>
-
-        <div class="work">
-          <video src="анимация.mp4" controls muted loop preload="metadata"></video>
-          <div class="work-body">
-            <span class="tag">Короткие видео · соцсети</span>
-            <h3>Анимированные ролики для соцсетей</h3>
-            <p>Задача: контент, который привлечёт. Анимированные ролики в фирменном стиле — например, видео с богатырём.</p>
-            <p class="result"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Результат: контент удерживает внимание и формирует доверие к продукту.</p>
           </div>
         </div>
       </div>
@@ -1422,6 +1523,14 @@
   </div>
 </footer>
 
+<!-- Лайтбокс: фото карточек -->
+<div class="lightbox" id="lightbox" hidden>
+  <button class="lb-btn lb-close" type="button" aria-label="Закрыть"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <button class="lb-btn lb-prev" type="button" aria-label="Предыдущее фото"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+  <img class="lb-img" src="" alt="">
+  <button class="lb-btn lb-next" type="button" aria-label="Следующее фото"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+</div>
+
 <script>
   // Мобильное меню
   const burger = document.getElementById('burger');
@@ -1440,6 +1549,46 @@
     e.preventDefault();
     navLinks.classList.remove('open');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Лайтбокс: фото карточек открываются по клику
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = lightbox.querySelector('.lb-img');
+  const lbPrev = lightbox.querySelector('.lb-prev');
+  const lbNext = lightbox.querySelector('.lb-next');
+  const lbClose = lightbox.querySelector('.lb-close');
+  let lbItems = [];
+  let lbIdx = 0;
+  function lbShow() {
+    lbImg.src = lbItems[lbIdx].src;
+    lbImg.alt = lbItems[lbIdx].alt || '';
+  }
+  function lbOpen(items, i) {
+    lbItems = items;
+    lbIdx = i;
+    lbShow();
+    lightbox.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+  function lbHide() {
+    lightbox.hidden = true;
+    document.body.style.overflow = '';
+    lbImg.src = '';
+  }
+  document.querySelectorAll('.gallery-card').forEach(card => {
+    const items = Array.from(card.querySelectorAll('.thumb img'));
+    items.forEach((img, i) => img.closest('.thumb').addEventListener('click', () => lbOpen(items, i)));
+  });
+  lbClose.addEventListener('click', lbHide);
+  lbPrev.addEventListener('click', () => { lbIdx = (lbIdx - 1 + lbItems.length) % lbItems.length; lbShow(); });
+  lbNext.addEventListener('click', () => { lbIdx = (lbIdx + 1) % lbItems.length; lbShow(); });
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lbHide(); });
+  document.addEventListener('keydown', (e) => {
+    if (lightbox.hidden) return;
+    if (e.key === 'Escape') { lbHide(); return; }
+    if (e.key === 'ArrowLeft') lbIdx = (lbIdx - 1 + lbItems.length) % lbItems.length;
+    if (e.key === 'ArrowRight') lbIdx = (lbIdx + 1) % lbItems.length;
+    lbShow();
   });
 
   // Анимации при скролле
